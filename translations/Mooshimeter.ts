@@ -95,4 +95,43 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>util</name>
+    <message>
+        <source>Voltage A/C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voltage D/C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current A/C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current D/C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Temperature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aux. Voltage A/C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aux. Voltage D/C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resistance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Diode</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
