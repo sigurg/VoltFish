@@ -298,7 +298,7 @@ void QMooshimeter::channel_config(const int &channel, Mapping &mapping, Analysis
     Q_ASSERT(it != valid_ranges.end());
     const QStringList &l = it->second;
 
-    cmd(ch + ":RANGE_I " + l[range]);
+    cmd(ch + ":RANGE_I " + l.at(range));
     cmd(ch + ":ANALYSIS " + an);
 
     if (channel == 1) {
@@ -349,8 +349,8 @@ void QMooshimeter::set_temp_unit(const TempUnit &t) {
 
 
 QString QMooshimeter::format(const Mapping &mapping, float val) {
-    QChar iPref[]{ 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y' };
-    QChar dPref[]{ 'm', 0x03bc, 'n', 'p', 'f', 'a', 'z', 'y' };
+    static const QList<QChar> iPref{ 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y' };
+    static const QList<QChar> dPref{ 'm', 0x03bc, 'n', 'p', 'f', 'a', 'z', 'y' };
 
     QString unit;
     switch (mapping) {
@@ -386,12 +386,13 @@ QString QMooshimeter::format(const Mapping &mapping, float val) {
 
     int deg = std::floor(std::log10(std::abs(val)) / 3);
     double sc = val * std::pow(1000, -deg);
-    if (deg > 0)
-        return QString::number(sc) + " " + iPref[deg-1] + unit;
-    else if (deg < 0)
-        return QString::number(sc) + " " + dPref[-deg-1] + unit;
-    else
+
+    if ((val == 0) || (deg == 0))
         return QString::number(val) + " " + unit;
+    if (deg > 0)
+        return QString::number(sc) + " " + iPref.at(deg-1) + unit;
+    else if (deg < 0)
+        return QString::number(sc) + " " + dPref.at(-deg-1) + unit;
 }
 
 
