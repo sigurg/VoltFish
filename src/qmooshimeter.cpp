@@ -33,8 +33,10 @@ QMooshimeter::QMooshimeter(QObject *parent) :
     log(false),
     ch1_mapping(Mapping::CURRENT),
     ch1_analysis(Analysis::MEAN),
+    ch1_range(100),
     ch2_mapping(Mapping::VOLTAGE),
-    ch2_analysis(Analysis::MEAN)
+    ch2_analysis(Analysis::MEAN),
+    ch2_range(100)
 {
     btaddr = settings.value("btaddr", "").toString();
     temp_unit = TempUnit(settings.value("tempunit", int(TempUnit::KELVIN)).toInt());
@@ -69,6 +71,13 @@ void QMooshimeter::connect() {
     set_rate("1000");
     set_depth("128");
     cmd("SAMPLING:TRIGGER CONTINUOUS");
+}
+
+
+
+void QMooshimeter::disconnect() {
+    mm.reset();
+    mm = nullptr;
 }
 
 
@@ -124,6 +133,7 @@ int QMooshimeter::get_bat_percent() {
 
 void QMooshimeter::set_ch1_mapping(const Mapping &m) {
     ch1_mapping = m;
+    ch1_range = 100; // start in highest range when switching modes
     set_ch1();
 }
 
@@ -136,13 +146,14 @@ void QMooshimeter::set_ch1_analysis(const Analysis &a) {
 
 
 
-void QMooshimeter::set_ch1_range(const QString &r) {
+void QMooshimeter::set_ch1_range(const int &r) {
     ch1_range = r;
     set_ch1();
 }
 
 void QMooshimeter::set_ch2_mapping(const Mapping &m) {
     ch2_mapping = m;
+    ch2_range = 100; // start in highest range when switching modes
     set_ch2();
 }
 
@@ -155,7 +166,7 @@ void QMooshimeter::set_ch2_analysis(const Analysis &a) {
 
 
 
-void QMooshimeter::set_ch2_range(const QString &r) {
+void QMooshimeter::set_ch2_range(const int &r) {
     ch2_range = r;
     set_ch2();
 }
@@ -197,17 +208,22 @@ bool QMooshimeter::is_shared(const Mapping &mapping) {
 
 
 
-bool QMooshimeter::check_range(const Mapping &mapping, QString &range) {
+bool QMooshimeter::check_range(const Mapping &mapping, int &range) {
     const auto &it = valid_ranges.find(mapping);
-    if (it == valid_ranges.end())
-        throw std::runtime_error("Invalid channel mapping");
+    Q_ASSERT(it != valid_ranges.end());
+
+    if (range < 0) {
+        range = 0;
+        return false;
+    }
 
     const QStringList &l = it->second;
-    if (l.contains(range))
-        return true;
+    if (range >= l.length()) {
+        range = l.length() - 1;
+        return false;
+    }
 
-    range = l.last();
-    return false;
+    return true;
 }
 
 
@@ -257,9 +273,10 @@ bool QMooshimeter::check_depth(QString &depth) {
 
 
 
-void QMooshimeter::channel_config(const int &channel, Mapping &mapping, Analysis &analysis, QString &range) {
+void QMooshimeter::channel_config(const int &channel, Mapping &mapping, Analysis &analysis, int &range) {
     Q_ASSERT(channel > 0 && channel < 3);
     check_mapping(channel, mapping);
+    check_range(mapping, range);
 
     QMetaEnum metaEnum = QMetaEnum::fromType<Mapping>();
     QString map = metaEnum.valueToKey(int(mapping));
@@ -279,16 +296,9 @@ void QMooshimeter::channel_config(const int &channel, Mapping &mapping, Analysis
 
     auto it = valid_ranges.find(mapping);
     Q_ASSERT(it != valid_ranges.end());
-    QString r;
-    for (const auto &i: it->second) {
-        if (format(mapping, i.toFloat()) == range) {
-            r = i;
-            break;
-        }
-    }
-    check_range(mapping, r);
+    const QStringList &l = it->second;
 
-    cmd(ch + ":RANGE_I " + r);
+    cmd(ch + ":RANGE_I " + l[range]);
     cmd(ch + ":ANALYSIS " + an);
 
     if (channel == 1) {

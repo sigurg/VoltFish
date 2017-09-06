@@ -51,11 +51,11 @@ public:
 
     Q_PROPERTY(Mapping ch1_mapping MEMBER ch1_mapping WRITE set_ch1_mapping NOTIFY ch1Config);
     Q_PROPERTY(Analysis ch1_analysis MEMBER ch1_analysis WRITE set_ch1_analysis NOTIFY ch1Config);
-    Q_PROPERTY(QString ch1_range MEMBER ch1_range WRITE set_ch1_range NOTIFY ch1Config);
+    Q_PROPERTY(int ch1_range MEMBER ch1_range WRITE set_ch1_range NOTIFY ch1Config);
 
     Q_PROPERTY(Mapping ch2_mapping MEMBER ch2_mapping WRITE set_ch2_mapping NOTIFY ch2Config);
     Q_PROPERTY(Analysis ch2_analysis MEMBER ch2_analysis WRITE set_ch2_analysis NOTIFY ch2Config);
-    Q_PROPERTY(QString ch2_range MEMBER ch2_range WRITE set_ch2_range NOTIFY ch2Config);
+    Q_PROPERTY(int ch2_range MEMBER ch2_range WRITE set_ch2_range NOTIFY ch2Config);
 
     Q_PROPERTY(QString rate MEMBER rate WRITE set_rate NOTIFY rateChanged);
     Q_PROPERTY(QString depth MEMBER depth WRITE set_depth NOTIFY depthChanged);
@@ -81,6 +81,7 @@ signals:
 
 public slots:
     void connect();
+    void disconnect();
     void reboot();
     void shipping_mode();
 
@@ -102,21 +103,21 @@ private:
     std::atomic<float> bat_v;
     std::atomic<bool>  log;
 
-    Mapping		ch1_mapping;
-    Analysis	ch1_analysis;
-    QString		ch1_range;
+    Mapping     ch1_mapping;
+    Analysis    ch1_analysis;
+    int         ch1_range;
 
-    Mapping		ch2_mapping;
-    Analysis	ch2_analysis;
-    QString		ch2_range;
+    Mapping     ch2_mapping;
+    Analysis    ch2_analysis;
+    int         ch2_range;
 
-    QString		rate;
-    QString		depth;
+    QString     rate;
+    QString     depth;
 
     QStringList model_ch1_range;
     QStringList model_ch2_range;
 
-    TempUnit	temp_unit;
+    TempUnit    temp_unit;
 
     void measurement_cb(const Measurement &m);
     void others_cb(const Response &r);
@@ -131,11 +132,11 @@ private:
 
     void set_ch1_mapping(const Mapping &m);
     void set_ch1_analysis(const Analysis &a);
-    void set_ch1_range(const QString &r);
+    void set_ch1_range(const int &r);
 
     void set_ch2_mapping(const Mapping &m);
     void set_ch2_analysis(const Analysis &a);
-    void set_ch2_range(const QString &r);
+    void set_ch2_range(const int &r);
 
     void set_rate(QString r);
     void set_depth(QString d);
@@ -146,7 +147,7 @@ private:
 
     bool is_shared(const Mapping &mapping);
 
-    bool check_range(const Mapping &mapping, QString &range);
+    bool check_range(const Mapping &mapping, int &range);
     bool check_mapping(const int &channel, Mapping &mapping);
 
     bool check_rate(QString &rate);
@@ -155,7 +156,7 @@ private:
     void set_ch1();
     void set_ch2();
 
-    void channel_config(const int &channel, Mapping &mapping, Analysis &analysis, QString &range);
+    void channel_config(const int &channel, Mapping &mapping, Analysis &analysis, int &range);
 
     QString format(const Mapping &mapping, float val);
 

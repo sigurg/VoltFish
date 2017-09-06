@@ -28,18 +28,14 @@ Page {
 
         ComboBox {
             label: qsTr("Temperature Unit")
+            currentIndex: mooshimeter.temp_unit
             menu: ContextMenu {
-                MenuItem {
-                    text: qsTr("Kelvin")
-                    onClicked: mooshimeter.temp_unit = 0
-                }
-                MenuItem {
-                    text: qsTr("Celcius")
-                    onClicked: mooshimeter.temp_unit = 1
-                }
-                MenuItem {
-                    text: qsTr("Fahrenheit")
-                    onClicked: mooshimeter.temp_unit = 2
+                Repeater {
+                    model: [qsTr("Kelvin"), qsTr("Celcius"), qsTr("Fahrenheit")]
+                    MenuItem {
+                        text: modelData
+                        onClicked: mooshimeter.temp_unit = index
+                    }
                 }
             }
         }

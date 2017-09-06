@@ -12,6 +12,12 @@ Page {
         enabled: Window.active && page.status == PageStatus.Active
     }
 
+    Connections {
+        target: mooshimeter
+        onCh1Config: ch1_range.currentIndex = mooshimeter.ch1_range
+        onCh2Config: ch2_range.currentIndex = mooshimeter.ch2_range
+    }
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -119,12 +125,13 @@ Page {
                     ComboBox {
                         id: ch1_range
                         width: page.width/2.2
+                        currentIndex: mooshimeter.ch1_range
                         menu: ContextMenu {
                             Repeater {
                                 model: mooshimeter.model_ch1_range
                                 MenuItem {
                                     text: modelData
-                                    onClicked: mooshimeter.ch1_range = modelData
+                                    onClicked: mooshimeter.ch1_range = index
                                 }
                             }
                         }
@@ -209,12 +216,13 @@ Page {
                     ComboBox {
                         id: ch2_range
                         width: page.width/2.2
+                        currentIndex: mooshimeter.ch2_range
                         menu: ContextMenu {
                             Repeater {
                                 model: mooshimeter.model_ch2_range
                                 MenuItem {
                                     text: modelData
-                                    onClicked: mooshimeter.ch2_range = modelData
+                                    onClicked: mooshimeter.ch2_range = index
                                 }
                             }
                         }
