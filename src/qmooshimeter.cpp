@@ -393,6 +393,8 @@ QString QMooshimeter::format(const Mapping &mapping, float val) {
         return QString::number(sc) + " " + iPref.at(deg-1) + unit;
     else if (deg < 0)
         return QString::number(sc) + " " + dPref.at(-deg-1) + unit;
+
+    return QString::number(val) + " " + unit; // this should never be reached, but GCC is nagging...
 }
 
 
