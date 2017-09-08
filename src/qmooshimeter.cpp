@@ -414,6 +414,7 @@ QString QMooshimeter::format(const Mapping &mapping, float val) {
                     val = val * 9.0/5.0 - 459.67;
                     break;
             }
+            return QString::number(val) + " " + unit; // no SI prefix for temperatures
             break;
 
         case Mapping::RESISTANCE:
