@@ -44,6 +44,26 @@ CoverBackground {
                 anchors.right: parent.right
             }
         }
+
+        Column {
+            width: parent.width
+            spacing: Theme.paddingSmall
+
+            Label {
+                text: mooshimeter.model_math()[mooshimeter.math_mode]
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeSmall
+            }
+
+            Label {
+                id: cover_math
+                text: mooshimeter.math
+                color: Theme.highlightColor
+                font.pixelSize: Theme.fontSizeExtraLarge
+                anchors.right: parent.right
+            }
+        }
+
     }
 }
 

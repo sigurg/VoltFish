@@ -35,6 +35,13 @@ public:
     };
     Q_ENUM(Analysis)
 
+    enum class MathMode {
+        REAL_PWR,
+        APP_PWR,
+        PWR_FACTOR
+    };
+    Q_ENUM(MathMode)
+
     enum class TempUnit {
         KELVIN,
         CELSIUS,
@@ -44,6 +51,7 @@ public:
 
     Q_PROPERTY(QString ch1 READ get_ch1 NOTIFY newMeasurement);
     Q_PROPERTY(QString ch2 READ get_ch2 NOTIFY newMeasurement);
+    Q_PROPERTY(QString math READ get_math NOTIFY newMeasurement);
 
     Q_PROPERTY(float bat_v READ get_bat_v NOTIFY batChanged);
     Q_PROPERTY(int bat_percent READ get_bat_percent NOTIFY batChanged);
@@ -57,6 +65,8 @@ public:
     Q_PROPERTY(Analysis ch2_analysis MEMBER ch2_analysis WRITE set_ch2_analysis NOTIFY ch2Config);
     Q_PROPERTY(int ch2_range MEMBER ch2_range WRITE set_ch2_range NOTIFY ch2Config);
 
+    Q_PROPERTY(MathMode math_mode MEMBER math_mode WRITE set_math_mode NOTIFY mathConfig);
+
     Q_PROPERTY(QString rate MEMBER rate WRITE set_rate NOTIFY rateChanged);
     Q_PROPERTY(QString depth MEMBER depth WRITE set_depth NOTIFY depthChanged);
 
@@ -66,12 +76,17 @@ public:
     Q_PROPERTY(QString btaddr MEMBER btaddr WRITE set_btaddr NOTIFY btaddrChanged);
     Q_PROPERTY(TempUnit temp_unit MEMBER temp_unit WRITE set_temp_unit NOTIFY tempunitChanged);
 
+    Q_INVOKABLE QStringList model_rate() { return valid_rates; };
+    Q_INVOKABLE QStringList model_depth() { return valid_buffer_depths; };
+    Q_INVOKABLE QStringList model_math() { return math_modes; };
+
 signals:
     void newMeasurement();
     void batChanged();
     void logChanged();
     void ch1Config();
     void ch2Config();
+    void mathConfig();
     void rateChanged();
     void depthChanged();
     void btaddrChanged();
@@ -92,16 +107,18 @@ private:
     static const std::map<const Mapping, const QStringList> valid_ranges;
     static const QStringList valid_rates;
     static const QStringList valid_buffer_depths;
+    static const QStringList math_modes;
 
     QSettings settings;
 
     std::shared_ptr<Mooshimeter> mm;
 
     QString btaddr;
-    std::atomic<float> ch1_value;
-    std::atomic<float> ch2_value;
-    std::atomic<float> bat_v;
-    std::atomic<bool>  log;
+    std::atomic<float>  ch1_value;
+    std::atomic<float>  ch2_value;
+    std::atomic<double> pwr;
+    std::atomic<float>  bat_v;
+    std::atomic<bool>   log;
 
     Mapping     ch1_mapping;
     Analysis    ch1_analysis;
@@ -110,6 +127,8 @@ private:
     Mapping     ch2_mapping;
     Analysis    ch2_analysis;
     int         ch2_range;
+
+    MathMode    math_mode;
 
     QString     rate;
     QString     depth;
@@ -124,6 +143,7 @@ private:
 
     QString get_ch1() { return format(ch1_mapping, ch1_value); };
     QString get_ch2() { return format(ch2_mapping, ch2_value); };
+    QString get_math();
 
     float get_bat_v() { return bat_v; };
     int get_bat_percent();
@@ -137,6 +157,8 @@ private:
     void set_ch2_mapping(const Mapping &m);
     void set_ch2_analysis(const Analysis &a);
     void set_ch2_range(const int &r);
+
+    void set_math_mode(const MathMode &mode);
 
     void set_rate(QString r);
     void set_depth(QString d);
@@ -159,6 +181,7 @@ private:
     void channel_config(const int &channel, Mapping &mapping, Analysis &analysis, int &range);
 
     QString format(const Mapping &mapping, float val);
+    QString si_prefix(const float &val);
 
     QStringList range_model(const Mapping &mapping);
 

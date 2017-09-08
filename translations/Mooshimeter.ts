@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>About</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainPage</name>
     <message>
         <source>Mooshimeter</source>
@@ -13,10 +20,6 @@
     </message>
     <message>
         <source>Buffer Depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -57,6 +60,21 @@
     </message>
     <message>
         <source>Voltage A/C</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QMooshimeter</name>
+    <message>
+        <source>Real Power</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apparent Power</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Power Factor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

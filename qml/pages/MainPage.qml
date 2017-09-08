@@ -22,9 +22,13 @@ Page {
         anchors.fill: parent
 
         PullDownMenu {
-            MenuItem {
-                text: qsTr("Settings")
-                onClicked: pageStack.push(Qt.resolvedUrl("Settings.qml"))
+            Repeater {
+                model: ["Settings"]
+                //model: ["About", "Settings"]
+                MenuItem {
+                    text: qsTr(modelData)
+                    onClicked: pageStack.push(Qt.resolvedUrl(modelData + ".qml"))
+                }
             }
         }
 
@@ -139,11 +143,6 @@ Page {
                 }
             }
 
-            Rectangle {
-                visible: false
-                height: 100
-            }
-
             Column {
                 spacing: Theme.paddingSmall
                 Label {
@@ -230,6 +229,36 @@ Page {
                 }
             }
 
+            Column {
+                width: parent.width
+                spacing: Theme.paddingSmall
+
+                Label {
+                    id: math_label
+                    anchors.rightMargin: 20
+                    x: Theme.horizontalPageMargin
+                    text: mooshimeter.math
+                    color: Theme.highlightColor
+                    font.pixelSize: 70
+                    anchors.right: parent.right
+                }
+
+                ComboBox {
+                    id: math_mode
+                    width: parent.width
+                    currentIndex: mooshimeter.math_mode
+                    menu: ContextMenu {
+                        Repeater {
+                            model: mooshimeter.model_math()
+                            MenuItem {
+                                text: qsTr(modelData)
+                                onClicked: mooshimeter.math_mode = index
+                            }
+                        }
+                    }
+                }
+            }
+
 
             Row {
                 ComboBox {
@@ -240,7 +269,7 @@ Page {
 
                     menu: ContextMenu {
                         Repeater {
-                            model: ["125", "250", "500", "1000", "2000", "4000", "8000"]
+                            model: mooshimeter.model_rate()
                             MenuItem {
                                 text: modelData
                                 onClicked: mooshimeter.rate = modelData
@@ -257,7 +286,7 @@ Page {
 
                     menu: ContextMenu {
                         Repeater {
-                            model: ["32", "64", "128", "256"]
+                            model: mooshimeter.model_depth()
                             MenuItem {
                                 text: modelData
                                 onClicked: mooshimeter.depth = modelData

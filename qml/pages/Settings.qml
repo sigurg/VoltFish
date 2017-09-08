@@ -5,7 +5,7 @@ import Sailfish.Silica 1.0
 Page {
     id: page
 
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
 
     Column {
         anchors.fill: parent
@@ -13,7 +13,6 @@ Page {
         PageHeader {
             title: qsTr("Settings")
         }
-
 
         TextField {
             id: bt

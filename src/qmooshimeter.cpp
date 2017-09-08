@@ -18,8 +18,14 @@ const std::map<const QMooshimeter::Mapping, const QStringList> QMooshimeter::val
     {Mapping::RESISTANCE, 	{"1000.0", "10000.0", "100000.0", "1000000.0", "10000000.0"}},
     {Mapping::DIODE,		{"1.2"}}
 };
-const QStringList QMooshimeter::valid_rates{ "125", "250", "500", "1000", "2000", "4000", "8000" };
-const QStringList QMooshimeter::valid_buffer_depths{ "32", "64", "128", "256" };
+const QStringList QMooshimeter::valid_rates{"125", "250", "500", "1000", "2000", "4000", "8000"};
+const QStringList QMooshimeter::valid_buffer_depths{"32", "64", "128", "256"};
+const QStringList QMooshimeter::math_modes{QT_TR_NOOP("Real Power"), QT_TR_NOOP("Apparent Power"), QT_TR_NOOP("Power Factor")};
+
+
+QDebug& operator<<(QDebug stream, const std::string &s) {
+    return stream << s.c_str();
+}
 
 
 
@@ -29,6 +35,7 @@ QMooshimeter::QMooshimeter(QObject *parent) :
     mm(nullptr),
     ch1_value(NAN),
     ch2_value(NAN),
+    pwr(NAN),
     bat_v(-1),
     log(false),
     ch1_mapping(Mapping::CURRENT),
@@ -36,7 +43,8 @@ QMooshimeter::QMooshimeter(QObject *parent) :
     ch1_range(100),
     ch2_mapping(Mapping::VOLTAGE),
     ch2_analysis(Analysis::MEAN),
-    ch2_range(100)
+    ch2_range(100),
+    math_mode(MathMode::REAL_PWR)
 {
     btaddr = settings.value("btaddr", "").toString();
     temp_unit = TempUnit(settings.value("tempunit", int(TempUnit::KELVIN)).toInt());
@@ -97,6 +105,7 @@ void QMooshimeter::shipping_mode() {
 void QMooshimeter::measurement_cb(const Measurement &m) {
     ch1_value = m.ch1.value;
     ch2_value = m.ch2.value;
+    pwr = m.pwr;
     emit newMeasurement();
 }
 
@@ -116,17 +125,40 @@ void QMooshimeter::others_cb(const Response &r) {
             emit logChanged();
         }
     } else {
-        qDebug() << "Unknown attribute: " << r.name.c_str() << " = " << r.value.c_str();
+        qDebug() << "Unknown attribute: " << r.name << " = " << r.value;
     }
+}
+
+
+
+QString QMooshimeter::get_math() {
+    QString unit;
+    double val{0};
+
+    switch (math_mode) {
+        case MathMode::REAL_PWR:
+            val = pwr;
+            unit = "W";
+            break;
+
+        case MathMode::APP_PWR:
+            val = ch1_value * ch2_value;
+            unit = "VA";
+            break;
+
+        case MathMode::PWR_FACTOR:
+            val = pwr / (ch1_value * ch2_value);
+            unit = "";
+            break;
+    }
+    return si_prefix(val) + unit;
 }
 
 
 
 int QMooshimeter::get_bat_percent() {
     int lvl = (bat_v - 2) * 100;
-    lvl = std::max(0, lvl);
-    lvl = std::min(100, lvl);
-    return lvl;
+    return qBound(0, lvl, 100);
 }
 
 
@@ -169,6 +201,13 @@ void QMooshimeter::set_ch2_analysis(const Analysis &a) {
 void QMooshimeter::set_ch2_range(const int &r) {
     ch2_range = r;
     set_ch2();
+}
+
+
+
+void QMooshimeter::set_math_mode(const MathMode &mode) {
+    math_mode = mode;
+    emit mathConfig();
 }
 
 
@@ -239,7 +278,7 @@ bool QMooshimeter::check_mapping(const int &channel, Mapping &mapping) {
             }
             break;
         case 2:
-            if (mapping == Mapping::CURRENT) {
+            if (mapping == Mapping::CURRENT ) {
                 mapping = Mapping::VOLTAGE;
                 return false;
             } else {
@@ -349,9 +388,6 @@ void QMooshimeter::set_temp_unit(const TempUnit &t) {
 
 
 QString QMooshimeter::format(const Mapping &mapping, float val) {
-    static const QList<QChar> iPref{ 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y' };
-    static const QList<QChar> dPref{ 'm', 0x03bc, 'n', 'p', 'f', 'a', 'z', 'y' };
-
     QString unit;
     switch (mapping) {
         case Mapping::VOLTAGE:
@@ -382,19 +418,31 @@ QString QMooshimeter::format(const Mapping &mapping, float val) {
 
         case Mapping::RESISTANCE:
             unit = QChar(0x03A9); // omega
+            break;
     }
 
+    return si_prefix(val) + unit;
+}
+
+
+
+QString QMooshimeter::si_prefix(const float &val) {
+    static const QList<QChar> iPref{ 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y' };
+    static const QList<QChar> dPref{ 'm', 0x03bc, 'n', 'p', 'f', 'a', 'z', 'y' };
+
+    if (val == 0)
+        return QString::number(val) + " ";
+
     int deg = std::floor(std::log10(std::abs(val)) / 3);
+    deg = qBound(-dPref.length(), deg, iPref.length());
     double sc = val * std::pow(1000, -deg);
 
-    if ((val == 0) || (deg == 0))
-        return QString::number(val) + " " + unit;
     if (deg > 0)
-        return QString::number(sc) + " " + iPref.at(deg-1) + unit;
+        return QString::number(sc) + " " + iPref.at(deg-1);
     else if (deg < 0)
-        return QString::number(sc) + " " + dPref.at(-deg-1) + unit;
+        return QString::number(sc) + " " + dPref.at(-deg-1);
 
-    return QString::number(val) + " " + unit; // this should never be reached, but GCC is nagging...
+    return QString::number(val) + " ";
 }
 
 
