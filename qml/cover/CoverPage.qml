@@ -4,7 +4,7 @@ import "util.js" as Util
 
 CoverBackground {
     Column {
-        spacing: Theme.paddingLarge
+        spacing: Theme.paddingMedium
         anchors.centerIn: parent
         width: parent.width - 20
 
