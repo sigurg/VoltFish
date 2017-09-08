@@ -112,6 +112,14 @@
         <source>Reboot Mooshimeter</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Enter shipping mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rebooting Mooshimeter</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>util</name>

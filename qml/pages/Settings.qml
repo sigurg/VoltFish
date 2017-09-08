@@ -23,6 +23,7 @@ Page {
             width: parent.width
             EnterKey.enabled: text.length == 17
             EnterKey.onClicked: mooshimeter.btaddr = text
+            EnterKey.iconSource: "image://theme/icon-m-enter-accept"
         }
 
         ComboBox {
@@ -43,16 +44,18 @@ Page {
             spacing: Theme.paddingLarge
             anchors.horizontalCenter: parent.horizontalCenter
 
+            RemorsePopup { id: remorse }
+
             Button {
                 text: qsTr("Reboot Mooshimeter")
                 anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: mooshimeter.reboot()
+                onClicked: remorse.execute(qsTr("Rebooting Mooshimeter"), mooshimeter.reboot)
             }
 
             Button {
                 text: qsTr("Shipping Mode")
                 anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: mooshimeter.shipping_mode()
+                onClicked: remorse.execute(qsTr("Enter shipping mode"), mooshimeter.shipping_mode)
             }
         }
     }
