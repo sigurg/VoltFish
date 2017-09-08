@@ -387,7 +387,7 @@ void QMooshimeter::set_temp_unit(const TempUnit &t) {
 }
 
 
-QString QMooshimeter::format(const Mapping &mapping, float val) {
+QString QMooshimeter::format(const Mapping &mapping, const float &val) {
     QString unit;
     switch (mapping) {
         case Mapping::VOLTAGE:
@@ -401,20 +401,7 @@ QString QMooshimeter::format(const Mapping &mapping, float val) {
             break;
 
         case Mapping::TEMP:
-            switch (temp_unit) {
-                case TempUnit::KELVIN:
-                    unit = "°K";
-                    break;
-                case TempUnit::CELSIUS:
-                    unit = "°C";
-                    val -= 273.15;
-                    break;
-                case TempUnit::FAHRENHEIT:
-                    unit = "°F";
-                    val = val * 9.0/5.0 - 459.67;
-                    break;
-            }
-            return QString::number(val) + " " + unit; // no SI prefix for temperatures
+            return format_temp(val);
             break;
 
         case Mapping::RESISTANCE:
@@ -423,6 +410,27 @@ QString QMooshimeter::format(const Mapping &mapping, float val) {
     }
 
     return si_prefix(val) + unit;
+}
+
+
+
+QString QMooshimeter::format_temp(float val) {
+    QString unit;
+    switch (temp_unit) {
+        case TempUnit::KELVIN:
+            unit = "°K";
+            break;
+        case TempUnit::CELSIUS:
+            unit = "°C";
+            val -= 273.15;
+            break;
+        case TempUnit::FAHRENHEIT:
+            unit = "°F";
+            val = val * 9.0/5.0 - 459.67;
+            break;
+    }
+
+    return QString::number(val) + " " + unit; // no SI prefix for temperatures
 }
 
 

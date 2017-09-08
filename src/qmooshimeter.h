@@ -180,7 +180,8 @@ private:
 
     void channel_config(const int &channel, Mapping &mapping, Analysis &analysis, int &range);
 
-    QString format(const Mapping &mapping, float val);
+    QString format(const Mapping &mapping, const float &val);
+    QString format_temp(float val);
     QString si_prefix(const float &val);
 
     QStringList range_model(const Mapping &mapping);
