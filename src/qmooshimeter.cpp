@@ -22,7 +22,7 @@ const QHash<QMooshimeter::Mapping, QStringList> QMooshimeter::valid_ranges{ // s
     {Mapping::RESISTANCE, 	{"1000.0", "10000.0", "100000.0", "1000000.0", "10000000.0"}},
     {Mapping::DIODE,		{"1.2"}}
 };
-const QHash<QMooshimeter::Mapping, QVector<float>> QMooshimeter::out_of_range{
+const QHash<QMooshimeter::Mapping, QVector<double>> QMooshimeter::out_of_range{
     {Mapping::VOLTAGE,		{70, 700}},
     {Mapping::CURRENT,		{11.5}},
     {Mapping::TEMP, 		{350}},
@@ -414,7 +414,7 @@ void QMooshimeter::set_temp_unit(const TempUnit &t) {
 
 
 
-QString QMooshimeter::format(const Mapping &mapping, const float &val) {
+QString QMooshimeter::format(const Mapping &mapping, const double &val) {
     QString unit;
     switch (mapping) {
         case Mapping::VOLTAGE:
@@ -441,13 +441,13 @@ QString QMooshimeter::format(const Mapping &mapping, const float &val) {
 
 
 
-bool QMooshimeter::is_out_of_range(const Mapping &mapping, const int &range, const float &val) {
+bool QMooshimeter::is_out_of_range(const Mapping &mapping, const int &range, const double &val) {
     return out_of_range.value(mapping).at(range) < std::abs(val);
 }
 
 
 
-QString QMooshimeter::format_temp(float val) {
+QString QMooshimeter::format_temp(double val) {
     QString unit;
     switch (temp_unit) {
         case TempUnit::KELVIN:
@@ -468,7 +468,7 @@ QString QMooshimeter::format_temp(float val) {
 
 
 
-QString QMooshimeter::si_prefix(const float &val) {
+QString QMooshimeter::si_prefix(const double &val) {
     static const QList<QChar> iPref{ 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y' };
     static const QList<QChar> dPref{ 'm', 0x03bc, 'n', 'p', 'f', 'a', 'z', 'y' };
 
@@ -492,7 +492,7 @@ QString QMooshimeter::si_prefix(const float &val) {
 QStringList QMooshimeter::range_model(const Mapping &mapping) {
     QStringList l;
     for (const auto &i: valid_ranges.value(mapping)) {
-        l.append(format(mapping, i.toFloat()));
+        l.append(format(mapping, i.toDouble()));
     }
     return l;
 }

@@ -106,7 +106,7 @@ private:
     static const int H_OUT{0x0012};
 
     static const QHash<Mapping, QStringList> valid_ranges;
-    static const QHash<Mapping, QVector<float>> out_of_range;
+    static const QHash<Mapping, QVector<double>> out_of_range;
     static const QStringList valid_rates;
     static const QStringList valid_buffer_depths;
     static const QStringList math_modes;
@@ -116,8 +116,8 @@ private:
     std::shared_ptr<Mooshimeter> mm;
 
     QString btaddr;
-    std::atomic<float>  ch1_value;
-    std::atomic<float>  ch2_value;
+    std::atomic<double> ch1_value;
+    std::atomic<double> ch2_value;
     std::atomic<double> pwr;
     std::atomic<float>  bat_v;
     std::atomic<bool>   log;
@@ -150,7 +150,7 @@ private:
     float get_bat_v() { return bat_v; };
     int get_bat_percent();
 
-    float get_log() { return log; };
+    bool get_log() { return log; };
 
     void set_ch1_mapping(const Mapping &m);
     void set_ch1_analysis(const Analysis &a);
@@ -177,16 +177,16 @@ private:
     bool check_rate(QString &rate);
     bool check_depth(QString &depth);
 
-    bool is_out_of_range(const Mapping &mapping, const int &range, const float &val);
+    bool is_out_of_range(const Mapping &mapping, const int &range, const double &val);
 
     void set_ch1();
     void set_ch2();
 
     void channel_config(const int &channel, Mapping &mapping, Analysis &analysis, int &range);
 
-    QString format(const Mapping &mapping, const float &val);
-    QString format_temp(float val);
-    QString si_prefix(const float &val);
+    QString format(const Mapping &mapping, const double &val);
+    QString format_temp(double val);
+    QString si_prefix(const double &val);
 
     QStringList range_model(const Mapping &mapping);
 
