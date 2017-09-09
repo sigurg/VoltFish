@@ -71,8 +71,9 @@ Page {
                     anchors.rightMargin: 20
                     x: Theme.horizontalPageMargin
                     text: mooshimeter.ch1
-                    color: Theme.highlightColor
+                    color: Theme.primaryColor
                     font.pixelSize: 100
+                    font.bold: true
                     anchors.right: parent.right
                 }
 
@@ -158,8 +159,9 @@ Page {
                     anchors.rightMargin: 20
                     x: Theme.horizontalPageMargin
                     text: mooshimeter.ch2
-                    color: Theme.highlightColor
+                    color: Theme.primaryColor
                     font.pixelSize: 100
+                    font.bold: true
                     anchors.right: parent.right
                 }
 
@@ -246,8 +248,9 @@ Page {
                     anchors.rightMargin: 20
                     x: Theme.horizontalPageMargin
                     text: mooshimeter.math
-                    color: Theme.highlightColor
+                    color: Theme.primaryColor
                     font.pixelSize: 70
+                    font.bold: true
                     anchors.right: parent.right
                 }
 
