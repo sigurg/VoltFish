@@ -1,12 +1,13 @@
 #pragma once
 
 #include <QObject>
+#include <QHash>
+#include <QVector>
 #include <QSettings>
 #include <QStringList>
 
 #include <atomic>
 #include <memory>
-#include <map>
 
 #include "lib/mooshimeter.h"
 
@@ -104,7 +105,8 @@ private:
     static const int H_IN{0x0015};
     static const int H_OUT{0x0012};
 
-    static const std::map<const Mapping, const QStringList> valid_ranges;
+    static const QHash<Mapping, QStringList> valid_ranges;
+    static const QHash<Mapping, QVector<float>> out_of_range;
     static const QStringList valid_rates;
     static const QStringList valid_buffer_depths;
     static const QStringList math_modes;
@@ -141,8 +143,8 @@ private:
     void measurement_cb(const Measurement &m);
     void others_cb(const Response &r);
 
-    QString get_ch1() { return format(ch1_mapping, ch1_value); };
-    QString get_ch2() { return format(ch2_mapping, ch2_value); };
+    QString get_ch1();
+    QString get_ch2();
     QString get_math();
 
     float get_bat_v() { return bat_v; };
@@ -174,6 +176,8 @@ private:
 
     bool check_rate(QString &rate);
     bool check_depth(QString &depth);
+
+    bool is_out_of_range(const Mapping &mapping, const int &range, const float &val);
 
     void set_ch1();
     void set_ch2();

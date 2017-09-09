@@ -10,13 +10,25 @@
 
 using namespace std::placeholders;
 
-const std::map<const QMooshimeter::Mapping, const QStringList> QMooshimeter::valid_ranges{
+uint qHash(const QMooshimeter::Mapping &m, uint seed = 0) {
+    return qHash(uint(m), seed);
+}
+
+const QHash<QMooshimeter::Mapping, QStringList> QMooshimeter::valid_ranges{ // strings, as sent to meter
     {Mapping::VOLTAGE,		{"60", "600"}},
     {Mapping::CURRENT,		{"10"}},
     {Mapping::TEMP, 		{"350"}},
     {Mapping::AUX_V,		{"0.1", "0.3", "1.2"}},
     {Mapping::RESISTANCE, 	{"1000.0", "10000.0", "100000.0", "1000000.0", "10000000.0"}},
     {Mapping::DIODE,		{"1.2"}}
+};
+const QHash<QMooshimeter::Mapping, QVector<float>> QMooshimeter::out_of_range{
+    {Mapping::VOLTAGE,		{70, 700}},
+    {Mapping::CURRENT,		{11.5}},
+    {Mapping::TEMP, 		{350}},
+    {Mapping::AUX_V,		{0.2, 0.3, 1.7}},
+    {Mapping::RESISTANCE, 	{2e3, 17.5e3, 2e6, 2e6, 17e6}},
+    {Mapping::DIODE,		{1.7}}
 };
 const QStringList QMooshimeter::valid_rates{"125", "250", "500", "1000", "2000", "4000", "8000"};
 const QStringList QMooshimeter::valid_buffer_depths{"32", "64", "128", "256"};
@@ -40,10 +52,10 @@ QMooshimeter::QMooshimeter(QObject *parent) :
     log(false),
     ch1_mapping(Mapping::CURRENT),
     ch1_analysis(Analysis::MEAN),
-    ch1_range(100),
+    ch1_range(0),
     ch2_mapping(Mapping::VOLTAGE),
     ch2_analysis(Analysis::MEAN),
-    ch2_range(100),
+    ch2_range(1),
     math_mode(MathMode::REAL_PWR)
 {
     btaddr = settings.value("btaddr", "").toString();
@@ -127,6 +139,24 @@ void QMooshimeter::others_cb(const Response &r) {
     } else {
         qDebug() << "Unknown attribute: " << r.name << " = " << r.value;
     }
+}
+
+
+
+QString QMooshimeter::get_ch1() {
+    if (is_out_of_range(ch1_mapping, ch1_range, ch1_value))
+        return QT_TR_NOOP("out of range");
+
+    return format(ch1_mapping, ch1_value);
+}
+
+
+
+QString QMooshimeter::get_ch2() {
+    if (is_out_of_range(ch2_mapping, ch2_range, ch2_value))
+        return QT_TR_NOOP("out of range");
+
+    return format(ch2_mapping, ch2_value);
 }
 
 
@@ -248,15 +278,13 @@ bool QMooshimeter::is_shared(const Mapping &mapping) {
 
 
 bool QMooshimeter::check_range(const Mapping &mapping, int &range) {
-    const auto &it = valid_ranges.find(mapping);
-    Q_ASSERT(it != valid_ranges.end());
+    const auto &l = valid_ranges.value(mapping);
 
     if (range < 0) {
         range = 0;
         return false;
     }
 
-    const QStringList &l = it->second;
     if (range >= l.length()) {
         range = l.length() - 1;
         return false;
@@ -333,9 +361,7 @@ void QMooshimeter::channel_config(const int &channel, Mapping &mapping, Analysis
         cmd(ch + ":MAPPING " + map);
     }
 
-    auto it = valid_ranges.find(mapping);
-    Q_ASSERT(it != valid_ranges.end());
-    const QStringList &l = it->second;
+    const auto &l = valid_ranges.value(mapping);
 
     cmd(ch + ":RANGE_I " + l.at(range));
     cmd(ch + ":ANALYSIS " + an);
@@ -387,6 +413,7 @@ void QMooshimeter::set_temp_unit(const TempUnit &t) {
 }
 
 
+
 QString QMooshimeter::format(const Mapping &mapping, const float &val) {
     QString unit;
     switch (mapping) {
@@ -410,6 +437,12 @@ QString QMooshimeter::format(const Mapping &mapping, const float &val) {
     }
 
     return si_prefix(val) + unit;
+}
+
+
+
+bool QMooshimeter::is_out_of_range(const Mapping &mapping, const int &range, const float &val) {
+    return out_of_range.value(mapping).at(range) < std::abs(val);
 }
 
 
@@ -458,9 +491,7 @@ QString QMooshimeter::si_prefix(const float &val) {
 
 QStringList QMooshimeter::range_model(const Mapping &mapping) {
     QStringList l;
-    auto it = valid_ranges.find(mapping);
-    Q_ASSERT(it != valid_ranges.end());
-    for (const auto &i: it->second) {
+    for (const auto &i: valid_ranges.value(mapping)) {
         l.append(format(mapping, i.toFloat()));
     }
     return l;

@@ -77,6 +77,10 @@
         <source>Power Factor</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>out of range</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Settings</name>
