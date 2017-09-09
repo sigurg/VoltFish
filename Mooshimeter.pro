@@ -37,7 +37,8 @@ DISTFILES += qml/Mooshimeter.qml \
     qml/pages/Settings.qml \
     qml/cover/util.js \
     qml/lib/ScreenBlank.qml \
-    qml/pages/About.qml
+    qml/pages/About.qml \
+    qml/pages/Graph.qml
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 

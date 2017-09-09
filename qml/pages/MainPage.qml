@@ -12,6 +12,14 @@ Page {
         enabled: Window.active && page.status == PageStatus.Active
     }
 
+    /*
+    onStatusChanged: {
+        if (status === PageStatus.Active) {
+            pageStack.pushAttached(Qt.resolvedUrl("Graph.qml"))
+        }
+    }
+    */
+
     Connections {
         target: mooshimeter
         onCh1Config: ch1_range.currentIndex = mooshimeter.ch1_range
