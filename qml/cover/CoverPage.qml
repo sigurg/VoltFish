@@ -22,6 +22,7 @@ CoverBackground {
                 text: mooshimeter.ch1
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeLarge
+                font.bold: true
                 anchors.right: parent.right
             }
         }
@@ -41,6 +42,7 @@ CoverBackground {
                 text: mooshimeter.ch2
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeLarge
+                font.bold: true
                 anchors.right: parent.right
             }
         }
@@ -60,6 +62,7 @@ CoverBackground {
                 text: mooshimeter.math
                 color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeLarge
+                font.bold: true
                 anchors.right: parent.right
             }
         }
