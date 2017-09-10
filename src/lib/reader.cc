@@ -87,8 +87,14 @@ void Reader::process()
           auto v = std::stoul(get<uint8_t>());
           if (v>=it->second.chooser_values.size())
           {
+            std::cerr << "Reader: "+r.name+": "+std::to_string(v)+
+              ": invalid chooser value" << std::endl;
+            r.value = "error";
+            break;
+            /*
             throw std::runtime_error("Reader: "+r.name+": "+std::to_string(v)+
               ": invalid chooser value");
+              */
           }
           r.value = it->second.chooser_values[v].value;
           it->second.chooser_idx = v;
