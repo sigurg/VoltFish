@@ -351,8 +351,8 @@ void QMooshimeter::channel_config(const int &channel, Mapping &mapping, Analysis
     metaEnum = QMetaEnum::fromType<Analysis>();
     QString an = metaEnum.valueToKey(int(analysis));
 
-    QString c;
     QString ch = "CH" + QString::number(channel);
+    const auto &l = valid_ranges.value(mapping);
 
     if (is_shared(mapping)) {
         cmd("SHARED " + map);
@@ -361,20 +361,18 @@ void QMooshimeter::channel_config(const int &channel, Mapping &mapping, Analysis
         cmd(ch + ":MAPPING " + map);
     }
 
-    const auto &l = valid_ranges.value(mapping);
-
     cmd(ch + ":RANGE_I " + l.at(range));
     cmd(ch + ":ANALYSIS " + an);
 
-    if (channel == 1) {
+    if (channel == 1)
         model_ch1_range = range_model(mapping);
-        emit ch1Config();
-        emit ch1modelChanged();
-    } else {
+    else
         model_ch2_range = range_model(mapping);
-        emit ch2Config();
-        emit ch2modelChanged();
-    }
+
+    emit ch1Config();
+    emit ch1modelChanged();
+    emit ch2Config();
+    emit ch2modelChanged();
 }
 
 
