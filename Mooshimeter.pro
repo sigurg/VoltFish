@@ -13,6 +13,10 @@
 TARGET = Mooshimeter
 
 CONFIG += sailfishapp
+CONFIG += c++11
+
+DEFINES += IS_SAILFISH_OS
+CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
 
 SOURCES += src/main.cpp \
     src/qmooshimeter.cpp \

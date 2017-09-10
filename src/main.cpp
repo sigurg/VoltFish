@@ -2,6 +2,7 @@
 #include <sailfishapp.h>
 #include "qmooshimeter.h"
 
+#define APP_VERSION "0.1"
 
 int main(int argc, char *argv[])
 {
@@ -11,6 +12,8 @@ int main(int argc, char *argv[])
 
     QMooshimeter mm;
     ctx->setContextProperty("mooshimeter", &mm);
+    ctx->setContextProperty("appName", "Mooshimeter");
+    ctx->setContextProperty("appVersion", APP_VERSION);
 
     app->setQuitOnLastWindowClosed(true);
 

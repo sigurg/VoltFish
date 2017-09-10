@@ -7,13 +7,13 @@
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Inofficial Sailfish OS app for the &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter&lt;/a&gt; Bluetooth low energy multimeter.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainPage</name>
-    <message>
-        <source>Mooshimeter</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Sampling Rate</source>
         <translation type="unfinished"></translation>

@@ -31,8 +31,7 @@ Page {
 
         PullDownMenu {
             Repeater {
-                model: ["Settings"]
-                //model: ["About", "Settings"]
+                model: ["About", "Settings"]
                 MenuItem {
                     text: qsTr(modelData)
                     onClicked: pageStack.push(Qt.resolvedUrl(modelData + ".qml"))
@@ -53,7 +52,7 @@ Page {
             width: page.width
             spacing: Theme.paddingLarge
             PageHeader {
-                title: qsTr("Mooshimeter")
+                title: appName
                 Label {
                     anchors.left: parent.left
                     anchors.margins: 20
