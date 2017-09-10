@@ -247,7 +247,7 @@ Page {
                     id: math_label
                     anchors.rightMargin: 20
                     x: Theme.horizontalPageMargin
-                    text: mooshimeter.math
+                    text: qsTr(mooshimeter.math)
                     color: Theme.primaryColor
                     font.pixelSize: 70
                     font.bold: true

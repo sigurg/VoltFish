@@ -167,16 +167,24 @@ QString QMooshimeter::get_math() {
 
     switch (math_mode) {
         case MathMode::REAL_PWR:
+            if (ch1_mapping != Mapping::CURRENT || (ch2_mapping != Mapping::VOLTAGE && ch2_mapping != Mapping::AUX_V))
+                return QT_TR_NOOP("invalid inputs");
             val = pwr;
             unit = "W";
             break;
 
         case MathMode::APP_PWR:
+            if (ch1_mapping != Mapping::CURRENT || (ch2_mapping != Mapping::VOLTAGE && ch2_mapping != Mapping::AUX_V))
+                return QT_TR_NOOP("invalid inputs");
             val = ch1_value * ch2_value;
             unit = "VA";
             break;
 
         case MathMode::PWR_FACTOR:
+            if (ch1_mapping != Mapping::CURRENT || (ch2_mapping != Mapping::VOLTAGE && ch2_mapping != Mapping::AUX_V))
+                return QT_TR_NOOP("invalid inputs");
+            if (ch1_analysis != Analysis::RMS || ch2_analysis != Analysis::RMS)
+                return QT_TR_NOOP("invalid inputs");
             val = pwr / (ch1_value * ch2_value);
             unit = "";
             break;
