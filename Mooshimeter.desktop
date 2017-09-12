@@ -2,7 +2,7 @@
 Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=Mooshimeter
-Exec=Mooshimeter
+Exec=invoker -s --type=silica-qt5 /usr/bin/Mooshimeter
 Name=Mooshimeter
 # translation example:
 # your app name in German locale (de)
