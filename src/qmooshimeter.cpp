@@ -32,8 +32,8 @@ const QHash<QMooshimeter::Mapping, QVector<double>> QMooshimeter::out_of_range{
 };
 const QStringList QMooshimeter::valid_rates{"125", "250", "500", "1000", "2000", "4000", "8000"};
 const QStringList QMooshimeter::valid_buffer_depths{"32", "64", "128", "256"};
-const QStringList QMooshimeter::math_modes{QT_TR_NOOP("Real Power"), QT_TR_NOOP("Apparent Power"), QT_TR_NOOP("Power Factor")};
-
+const QStringList QMooshimeter::math_modes{QT_TR_NOOP("Real Power"), QT_TR_NOOP("Apparent Power"), QT_TR_NOOP("Power Factor"), QT_TR_NOOP("Thermocouple (K)")};
+constexpr std::array<double, 10> QMooshimeter::thermocouple_coeff;
 
 QDebug& operator<<(QDebug stream, const std::string &s) {
     return stream << s.c_str();
@@ -103,13 +103,13 @@ void QMooshimeter::disconnect() {
 
 
 void QMooshimeter::reboot() {
-    cmd("REBOOT:NORMAL");
+    cmd("REBOOT NORMAL");
 }
 
 
 
 void QMooshimeter::shipping_mode() {
-    cmd("REBOOT:SHIPMODE");
+    cmd("REBOOT SHIPMODE");
 }
 
 
@@ -161,6 +161,15 @@ QString QMooshimeter::get_ch2() {
 
 
 
+double QMooshimeter::thermocouple_convert(const double &v) {
+    double t{0}, uv{v * 1e6};
+    for (size_t i=0; i<thermocouple_coeff.size(); ++i)
+        t += thermocouple_coeff.at(i)*std::pow(uv, i);
+    return t;
+}
+
+
+
 QString QMooshimeter::get_math() {
     QString unit;
     double val{0};
@@ -187,6 +196,17 @@ QString QMooshimeter::get_math() {
                 return QT_TR_NOOP("invalid inputs");
             val = pwr / (ch1_value * ch2_value);
             unit = "";
+            break;
+
+        case MathMode::THERMOCOUPLE_K:
+            if (ch1_mapping != Mapping::TEMP && ch2_mapping != Mapping::TEMP)
+                return QT_TR_NOOP("invalid inputs");
+            if (ch1_mapping != Mapping::AUX_V && ch2_mapping != Mapping::AUX_V)
+                return QT_TR_NOOP("invalid inputs");
+            double v = (ch1_mapping == Mapping::AUX_V) ? ch1_value : ch2_value;
+            double t = (ch1_mapping == Mapping::TEMP) ? ch1_value : ch2_value;
+            t += thermocouple_convert(v);
+            return format_temp(t);
             break;
     }
     return si_prefix(val) + unit;

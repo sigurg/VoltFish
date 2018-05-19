@@ -85,6 +85,10 @@
         <source>invalid inputs</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Thermocouple (K)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Settings</name>

@@ -6,6 +6,7 @@
 #include <QSettings>
 #include <QStringList>
 
+#include <array>
 #include <atomic>
 #include <memory>
 
@@ -39,7 +40,8 @@ public:
     enum class MathMode {
         REAL_PWR,
         APP_PWR,
-        PWR_FACTOR
+        PWR_FACTOR,
+        THERMOCOUPLE_K
     };
     Q_ENUM(MathMode)
 
@@ -110,6 +112,20 @@ private:
     static const QStringList valid_rates;
     static const QStringList valid_buffer_depths;
     static const QStringList math_modes;
+    static constexpr std::array<double, 10> thermocouple_coeff{{
+            1,
+            2.508355e-2,
+            7.860106e-8,
+            -2.503131e-10,
+            8.315270e-14,
+            -1.228034e-17,
+            9.804036e-22,
+            -4.413030e-26,
+            1.057734e-30,
+            -1.052755e-35
+    }};
+
+
 
     QSettings settings;
 
@@ -142,6 +158,8 @@ private:
 
     void measurement_cb(const Measurement &m);
     void others_cb(const Response &r);
+
+    double thermocouple_convert(const double &v);
 
     QString get_ch1();
     QString get_ch2();
