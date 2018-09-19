@@ -113,7 +113,7 @@ private:
     static const QStringList valid_buffer_depths;
     static const QStringList math_modes;
     static constexpr std::array<double, 10> thermocouple_coeff{{
-            1,
+            0,
             2.508355e-2,
             7.860106e-8,
             -2.503131e-10,
