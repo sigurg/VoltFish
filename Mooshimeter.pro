@@ -55,6 +55,7 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/Mooshimeter-de.ts
+TRANSLATIONS += translations/Mooshimeter-es.ts
 
 HEADERS += \
     src/qmooshimeter.h \
