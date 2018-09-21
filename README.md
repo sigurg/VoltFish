@@ -20,4 +20,4 @@ This app is in early alpha stage, and has only been tested in my phone (Aquafish
 * probably a lot of other features I can't think of right now :)
 
 ## Known bugs:
-* app sometimes fails to start because connection to the Mooshimeter fails. In this case, you need to kill the app manually using the terminal command "pkill -9 Mooshimeter".
+* app sometimes fails to start because connection to the Mooshimeter fails. In this case, you need to kill the app manually using the terminal command "pkill -9 VoltFish".
