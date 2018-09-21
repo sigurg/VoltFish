@@ -43,7 +43,7 @@ QDebug& operator<<(QDebug stream, const std::string &s) {
 
 QMooshimeter::QMooshimeter(QObject *parent) :
     QObject(parent),
-    settings("sie.gl", "Mooshimeter", this),
+    settings("VoltFish", "VoltFish", this),
     mm(nullptr),
     ch1_value(NAN),
     ch2_value(NAN),

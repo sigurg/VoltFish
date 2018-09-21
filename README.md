@@ -1,5 +1,5 @@
-# sailfishos-mooshimeter
-[SailfishOS](https://sailfishos.org/) app for the [Mooshimeter](https://moosh.im/mooshimeter/) BluetoothLE Multimeter
+# VoltFish
+[SailfishOS](https://sailfishos.org/) app for the [Mooshimeter](https://moosh.im/mooshimeter/) BluetoothLE Multimeter based on [pk8's mooshimeter lib](https://github.com/pk8/mooshimeter-lib).
 
 This app is in early alpha stage, and has only been tested in my phone (Aquafish) with my meter, so expect plenty of bugs :)
 

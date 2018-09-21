@@ -1,6 +1,6 @@
-Name: Mooshimeter
-Summary: Mooshimeter
-Version: 0.1
+Name: VoltFish
+Summary: inofficial app for the Mooshimeter BluetoothLE multimeter
+Version: 0.1.1
 Release: 1
 # The contents of the Group field should be one of the groups listed here:
 # http://gitorious.org/meego-developer-tools/spectacle/blobs/master/data/GROUPS
@@ -12,7 +12,7 @@ License: LICENSE
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Short description of my Sailfish OS Application
+  Get readings from your Mooshimeter
 Configure: none
 # The qtc5 builder inserts macros to allow QtCreator to have fine
 # control over qmake/make execution

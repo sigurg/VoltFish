@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = Mooshimeter
+TARGET = VoltFish
 
 CONFIG += sailfishapp
 CONFIG += c++11
@@ -29,20 +29,21 @@ SOURCES += src/main.cpp \
     src/lib/util.cc \
     src/lib/writer.cc
 
-DISTFILES += qml/Mooshimeter.qml \
+DISTFILES += \
     qml/cover/CoverPage.qml \
-    rpm/Mooshimeter.changes.in \
-    rpm/Mooshimeter.changes.run.in \
-    rpm/Mooshimeter.spec \
-    rpm/Mooshimeter.yaml \
+    rpm/VoltFish.changes.in \
+    rpm/VoltFish.changes.run.in \
+    rpm/VoltFish.spec \
+    rpm/VoltFish.yaml \
     translations/*.ts \
-    Mooshimeter.desktop \
+    VoltFish.desktop \
     qml/pages/MainPage.qml \
     qml/pages/Settings.qml \
     qml/cover/util.js \
     qml/lib/ScreenBlank.qml \
     qml/pages/About.qml \
-    qml/pages/Graph.qml
+    qml/pages/Graph.qml \
+    qml/VoltFish.qml
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
@@ -54,8 +55,8 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/Mooshimeter-de.ts
-TRANSLATIONS += translations/Mooshimeter-es.ts
+TRANSLATIONS += translations/VoltFish-de.ts
+TRANSLATIONS += translations/VoltFish-es.ts
 
 HEADERS += \
     src/qmooshimeter.h \

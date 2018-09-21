@@ -2,7 +2,7 @@
 #include <sailfishapp.h>
 #include "qmooshimeter.h"
 
-#define APP_VERSION "0.1"
+#define APP_VERSION "0.1.1"
 
 int main(int argc, char *argv[])
 {
@@ -12,12 +12,12 @@ int main(int argc, char *argv[])
 
     QMooshimeter mm;
     ctx->setContextProperty("mooshimeter", &mm);
-    ctx->setContextProperty("appName", "Mooshimeter");
+    ctx->setContextProperty("appName", "VoltFish");
     ctx->setContextProperty("appVersion", APP_VERSION);
 
     app->setQuitOnLastWindowClosed(true);
 
-    view->setSource(SailfishApp::pathTo("/qml/Mooshimeter.qml"));
+    view->setSource(SailfishApp::pathTo("/qml/VoltFish.qml"));
     view->showFullScreen();
 
     return app->exec();

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-APP_NAME=Mooshimeter
+APP_NAME=VoltFish
 cd "$(dirname "$(readlink -f "$0")")"
 
 for i in 86x86 108x108 128x128
