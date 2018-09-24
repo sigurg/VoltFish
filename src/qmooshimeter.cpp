@@ -84,7 +84,7 @@ void QMooshimeter::connect() {
                 H_OUT,
                 std::bind(&QMooshimeter::measurement_cb, this, _1),
                 std::bind(&QMooshimeter::others_cb, this, _1),
-                true
+                false // verbose
                 );
 
     set_ch1();
