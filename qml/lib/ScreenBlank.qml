@@ -10,7 +10,7 @@ Item {
     property bool enabled: false
     function request(){
         var method = "req_display"+(enabled?"":"_cancel")+"_blanking_pause";
-        console.log('screen blank:', enabled, method);
+        //console.log('screen blank:', enabled, method);
         dbif.call(method, [])
     }
 

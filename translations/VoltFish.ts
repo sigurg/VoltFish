@@ -62,9 +62,14 @@
         <source>Voltage A/C</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>QMooshimeter</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <source>Real Power</source>
         <translation type="unfinished"></translation>
@@ -78,15 +83,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Thermocouple (K)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QMooshimeter</name>
+    <message>
         <source>out of range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>invalid inputs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Thermocouple (K)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

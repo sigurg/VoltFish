@@ -62,9 +62,14 @@
         <source>Voltage A/C</source>
         <translation>Voltaje C/A</translation>
     </message>
-</context>
-<context>
-    <name>QMooshimeter</name>
+    <message>
+        <source>About</source>
+        <translation>Acerca de</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Ajustes</translation>
+    </message>
     <message>
         <source>Real Power</source>
         <translation>Potencia real</translation>
@@ -78,16 +83,19 @@
         <translation>Potencia factor</translation>
     </message>
     <message>
+        <source>Thermocouple (K)</source>
+        <translation>Termopar (K)</translation>
+    </message>
+</context>
+<context>
+    <name>QMooshimeter</name>
+    <message>
         <source>out of range</source>
         <translation>Fuera de rango</translation>
     </message>
     <message>
         <source>invalid inputs</source>
         <translation>Entradas inválidas</translation>
-    </message>
-    <message>
-        <source>Thermocouple (K)</source>
-        <translation>Termopar (K)</translation>
     </message>
 </context>
 <context>
