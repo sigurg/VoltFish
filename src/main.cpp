@@ -2,7 +2,7 @@
 #include <sailfishapp.h>
 #include "qmooshimeter.h"
 
-#define APP_VERSION "0.1.1"
+#define APP_VERSION "0.1.2"
 
 // pages names for pull-down menu
 __attribute__((unused)) constexpr auto PAGE_NAMES{
