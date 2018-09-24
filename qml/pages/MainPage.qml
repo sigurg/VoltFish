@@ -12,6 +12,14 @@ Page {
         enabled: Window.active && page.status == PageStatus.Active
     }
 
+    Timer {
+        id: connectTimer
+        running: false
+        repeat: false
+        interval: 500
+        onTriggered: mooshimeter.connect()
+    }
+
     /*
     onStatusChanged: {
         if (status === PageStatus.Active) {
@@ -43,7 +51,7 @@ Page {
 
         Component.onCompleted: {
             if (mooshimeter.btaddr != "")
-                mooshimeter.connect()
+                connectTimer.start();
         }
 
         Column {
