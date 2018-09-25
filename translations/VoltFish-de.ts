@@ -126,7 +126,7 @@
     </message>
     <message>
         <source>Shipping Mode</source>
-        <translation>Tierschlafmodus</translation>
+        <translation>Transportmodus</translation>
     </message>
     <message>
         <source>Reboot Mooshimeter</source>
@@ -134,7 +134,7 @@
     </message>
     <message>
         <source>Enter shipping mode</source>
-        <translation>Tierschlafmodus Aktivieren</translation>
+        <translation>Transportmodus Aktivieren</translation>
     </message>
     <message>
         <source>Rebooting Mooshimeter</source>
