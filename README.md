@@ -3,7 +3,7 @@
 
 This app is in early alpha stage, and has only been tested in my phone (Aquafish) with my meter, so expect plenty of bugs :)
 
-**To use the app, you must enter the Bluetooth ID of your Mooshimeter in the app's settings dialog.**
+**To use the app, you must enter the Bluetooth ID of your Mooshimeter in the app's settings dialog. Currently only 147xxx series firmware is supported, 152xxx does not work.**
 
 
 ## What works:
@@ -20,4 +20,4 @@ This app is in early alpha stage, and has only been tested in my phone (Aquafish
 * probably a lot of other features I can't think of right now :)
 
 ## Known bugs:
-* app sometimes fails to start because connection to the Mooshimeter fails. In this case, you need to kill the app manually using the terminal command "pkill -9 VoltFish".
+* app sometimes fails to connect to Mooshimeter at startup and becomes unresponsive

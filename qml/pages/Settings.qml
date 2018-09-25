@@ -14,6 +14,13 @@ Page {
             title: qsTr("Settings")
         }
 
+        Label {
+            text: qsTr("Note:\nrequires Mooshimeter firmware 147xxx")
+            width: parent.width
+            wrapMode: TextInput.WordWrap
+            padding: Theme.paddingMedium
+        }
+
         TextField {
             id: bt
             focus: true

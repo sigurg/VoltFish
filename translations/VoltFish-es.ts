@@ -140,6 +140,11 @@
         <source>Rebooting Mooshimeter</source>
         <translation>Reiniciando Mooshimeter</translation>
     </message>
+    <message>
+        <source>Note:
+requires Mooshimeter firmware 147xxx</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>util</name>
