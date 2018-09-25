@@ -118,7 +118,7 @@
     </message>
     <message>
         <source>Celcius</source>
-        <translation>Celcius</translation>
+        <translation>Celsius</translation>
     </message>
     <message>
         <source>Fahrenheit</source>
