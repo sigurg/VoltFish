@@ -5,184 +5,185 @@
     <name>About</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <source>Inofficial Sailfish OS app for the &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter&lt;/a&gt; Bluetooth low energy multimeter.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inoffizielle Sailfish OS App für das &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter&lt;/a&gt; Bluetooth Low Energy Multimeter.</translation>
     </message>
 </context>
 <context>
     <name>MainPage</name>
     <message>
         <source>Sampling Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Abtastrate</translation>
     </message>
     <message>
         <source>Buffer Depth</source>
-        <translation type="unfinished"></translation>
+        <translation>Speichertiefe</translation>
     </message>
     <message>
         <source>Bat: </source>
-        <translation type="unfinished"></translation>
+        <translation>Bat: </translation>
     </message>
     <message>
         <source>Current D/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Gleichstrom</translation>
     </message>
     <message>
         <source>Current A/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Wechselstrom</translation>
     </message>
     <message>
         <source>Aux. Voltage D/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Präz. Gleichspannung</translation>
     </message>
     <message>
         <source>Aux. Voltage A/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Präz. Wechselspannung</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished"></translation>
+        <translation>Widerstand</translation>
     </message>
     <message>
         <source>Diode</source>
-        <translation type="unfinished"></translation>
+        <translation>Diode</translation>
     </message>
     <message>
         <source>Temperature</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur</translation>
     </message>
     <message>
         <source>Voltage D/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Gleichspannung</translation>
     </message>
     <message>
         <source>Voltage A/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Wechselspannung</translation>
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Real Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Wirkleistung</translation>
     </message>
     <message>
         <source>Apparent Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Scheinleistung</translation>
     </message>
     <message>
         <source>Power Factor</source>
-        <translation type="unfinished"></translation>
+        <translation>Leistungsfaktor</translation>
     </message>
     <message>
         <source>Thermocouple (K)</source>
-        <translation type="unfinished"></translation>
+        <translation>Thermoelement (K)</translation>
     </message>
 </context>
 <context>
     <name>QMooshimeter</name>
     <message>
         <source>out of range</source>
-        <translation type="unfinished"></translation>
+        <translation>Messw. überschr.</translation>
     </message>
     <message>
         <source>invalid inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>ungültige Eingänge</translation>
     </message>
 </context>
 <context>
     <name>Settings</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Bluetooth Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth-Adresse</translation>
     </message>
     <message>
         <source>Temperature Unit</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatureinheit</translation>
     </message>
     <message>
         <source>Kelvin</source>
-        <translation type="unfinished"></translation>
+        <translation>Kelvin</translation>
     </message>
     <message>
         <source>Celcius</source>
-        <translation type="unfinished"></translation>
+        <translation>Celsius</translation>
     </message>
     <message>
         <source>Fahrenheit</source>
-        <translation type="unfinished"></translation>
+        <translation>Fahrenheit</translation>
     </message>
     <message>
         <source>Shipping Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Transportmodus</translation>
     </message>
     <message>
         <source>Reboot Mooshimeter</source>
-        <translation type="unfinished"></translation>
+        <translation>Mooshimeter neustarten</translation>
     </message>
     <message>
         <source>Enter shipping mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Transportmodus aktivieren</translation>
     </message>
     <message>
         <source>Rebooting Mooshimeter</source>
-        <translation type="unfinished"></translation>
+        <translation>Neustart des Mooshimeter</translation>
     </message>
     <message>
         <source>Note:
 requires Mooshimeter firmware 147xxx</source>
-        <translation type="unfinished"></translation>
+        <translation>Info:
+benötigt Mooshimeter Firmware 147xxx</translation>
     </message>
 </context>
 <context>
     <name>util</name>
     <message>
         <source>Voltage A/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Wechselspannung</translation>
     </message>
     <message>
         <source>Voltage D/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Gleichspannung</translation>
     </message>
     <message>
         <source>Current A/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Wechselstrom</translation>
     </message>
     <message>
         <source>Current D/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Gleichstrom</translation>
     </message>
     <message>
         <source>Temperature</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur</translation>
     </message>
     <message>
         <source>Aux. Voltage A/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Präz. Wechselspannung</translation>
     </message>
     <message>
         <source>Aux. Voltage D/C</source>
-        <translation type="unfinished"></translation>
+        <translation>Präz. Gleichspannung</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished"></translation>
+        <translation>Widerstand</translation>
     </message>
     <message>
         <source>Diode</source>
-        <translation type="unfinished"></translation>
+        <translation>Diode</translation>
     </message>
 </context>
 </TS>
