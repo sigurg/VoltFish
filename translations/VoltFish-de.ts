@@ -20,7 +20,7 @@
     </message>
     <message>
         <source>Buffer Depth</source>
-        <translation>Puffertiefe</translation>
+        <translation>Speichertiefe</translation>
     </message>
     <message>
         <source>Bat: </source>
@@ -28,19 +28,19 @@
     </message>
     <message>
         <source>Current D/C</source>
-        <translation>Aktueller D/C</translation>
+        <translation>Gleichstrom</translation>
     </message>
     <message>
         <source>Current A/C</source>
-        <translation>Aktueller A/C</translation>
+        <translation>Wechselstrom</translation>
     </message>
     <message>
         <source>Aux. Voltage D/C</source>
-        <translation>Aux. Stromspannung D/C</translation>
+        <translation>Präz. Gleichspannung</translation>
     </message>
     <message>
         <source>Aux. Voltage A/C</source>
-        <translation>Aux. Stromspannung D/C</translation>
+        <translation>Präz. Wechselspannung</translation>
     </message>
     <message>
         <source>Resistance</source>
@@ -56,11 +56,11 @@
     </message>
     <message>
         <source>Voltage D/C</source>
-        <translation>Stromspannung D/C</translation>
+        <translation>Gleichspannung</translation>
     </message>
     <message>
         <source>Voltage A/C</source>
-        <translation>Stromspannung A/C</translation>
+        <translation>Wechselspannung</translation>
     </message>
     <message>
         <source>About</source>
@@ -72,11 +72,11 @@
     </message>
     <message>
         <source>Real Power</source>
-        <translation>Echte Leistung</translation>
+        <translation>Wirkleistung</translation>
     </message>
     <message>
         <source>Apparent Power</source>
-        <translation>Scheinbare Leistung</translation>
+        <translation>Scheinleistung</translation>
     </message>
     <message>
         <source>Power Factor</source>
@@ -91,11 +91,11 @@
     <name>QMooshimeter</name>
     <message>
         <source>out of range</source>
-        <translation>außer Reichweite</translation>
+        <translation>Messw. überschr.</translation>
     </message>
     <message>
         <source>invalid inputs</source>
-        <translation>ungültige Eingaben</translation>
+        <translation>ungültige Eingänge</translation>
     </message>
 </context>
 <context>
@@ -130,11 +130,11 @@
     </message>
     <message>
         <source>Reboot Mooshimeter</source>
-        <translation>Neustart des Mooshimeter</translation>
+        <translation>Mooshimeter neustarten</translation>
     </message>
     <message>
         <source>Enter shipping mode</source>
-        <translation>Transportmodus Aktivieren</translation>
+        <translation>Transportmodus aktivieren</translation>
     </message>
     <message>
         <source>Rebooting Mooshimeter</source>
@@ -151,19 +151,19 @@ benötigt Mooshimeter Firmware 147xxx</translation>
     <name>util</name>
     <message>
         <source>Voltage A/C</source>
-        <translation>Stromspannung A/C</translation>
+        <translation>Wechselspannung</translation>
     </message>
     <message>
         <source>Voltage D/C</source>
-        <translation>Stromspannung D/C</translation>
+        <translation>Gleichspannung</translation>
     </message>
     <message>
         <source>Current A/C</source>
-        <translation>Aktueller A/C</translation>
+        <translation>Wechselstrom</translation>
     </message>
     <message>
         <source>Current D/C</source>
-        <translation>Aktueller D/C</translation>
+        <translation>Gleichstrom</translation>
     </message>
     <message>
         <source>Temperature</source>
@@ -171,11 +171,11 @@ benötigt Mooshimeter Firmware 147xxx</translation>
     </message>
     <message>
         <source>Aux. Voltage A/C</source>
-        <translation>Aux. Stromspannung A/C</translation>
+        <translation>Präz. Wechselspannung</translation>
     </message>
     <message>
         <source>Aux. Voltage D/C</source>
-        <translation>Aux. Stromspannung D/C</translation>
+        <translation>Präz. Gleichspannung</translation>
     </message>
     <message>
         <source>Resistance</source>
