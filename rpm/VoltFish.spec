@@ -15,9 +15,9 @@ Name:       VoltFish
 Summary:    inofficial app for the Mooshimeter BluetoothLE multimeter
 Version:    0.1.2
 Release:    1
-Group:      Qt/Qt
+Group:      Applications/Engineering
 License:    LICENSE
-URL:        http://example.org/
+URL:        https://github.com/sigurg/VoltFish
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  VoltFish.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
@@ -25,6 +25,7 @@ BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(zlib)
 BuildRequires:  desktop-file-utils
 
 %description
