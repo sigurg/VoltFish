@@ -127,5 +127,13 @@
         <source></source>
         <translation>Entradas inválidas</translation>
     </message>
+    <message id="button-report-issue">
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="button-github-page">
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

@@ -128,5 +128,13 @@ requires Mooshimeter firmware 147xxx</translation>
         <source></source>
         <translation>Settings</translation>
     </message>
+    <message id="button-report-issue">
+        <source></source>
+        <translation>Report Issue</translation>
+    </message>
+    <message id="button-github-page">
+        <source></source>
+        <translation>View source on Github</translation>
+    </message>
 </context>
 </TS>

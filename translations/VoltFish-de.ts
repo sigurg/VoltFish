@@ -128,5 +128,13 @@ benötigt Mooshimeter Firmware 147xxx</translation>
         <source></source>
         <translation>ungültige Eingänge</translation>
     </message>
+    <message id="button-report-issue">
+        <source></source>
+        <translation>Problem melden</translation>
+    </message>
+    <message id="button-github-page">
+        <source></source>
+        <translation>Github Projektseite</translation>
+    </message>
 </context>
 </TS>

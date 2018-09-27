@@ -39,5 +39,18 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             onLinkActivated : Qt.openUrlExternally(link)
         }
+
+        Button {
+            text: qsTrId("button-report-issue")
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: Qt.openUrlExternally("https://github.com/sigurg/VoltFish/issues")
+        }
+
+        Button {
+            text: qsTrId("button-github-page")
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: Qt.openUrlExternally("https://github.com/sigurg/VoltFish")
+        }
+
     }
 }
