@@ -1,4 +1,5 @@
 #include "mooshimeter.h"
+#include <iostream>
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Mooshimeter::Mooshimeter(const char* _hwaddr, uint16_t _hin, uint16_t _hout,
@@ -13,6 +14,12 @@ Mooshimeter::Mooshimeter(const char* _hwaddr, uint16_t _hin, uint16_t _hout,
   wr.cmd("ADMIN:CRC32 "+wr.cmd("ADMIN:CRC32").get());
   // Update config tree data.
   config.rebuild(wr.cmd("ADMIN:TREE").get());
+
+#ifndef _NDEBUG
+  std::cerr << std::endl << "*** Config Tree: " << std::endl;
+  config.print(std::cerr);
+  std::cerr << std::endl << std::endl;
+#endif
 }
 //---------------------------------------------------------------------------
 Mooshimeter::~Mooshimeter()
