@@ -85,10 +85,10 @@ void QMooshimeter::connect() {
                 std::bind(&QMooshimeter::measurement_cb, this, _1),
                 std::bind(&QMooshimeter::others_cb, this, _1),
 				// use verbose mode for debug builds
-#ifndef _NDEBUG
-                true
-#else
+#ifdef QT_NO_DEBUG_OUTPUT
                 false
+#else
+                true
 #endif
                 );
 
