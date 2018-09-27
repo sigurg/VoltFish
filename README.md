@@ -17,7 +17,13 @@ This app is in early alpha stage, and has only been tested in my phone (Aquafish
 * there is no scanning/connection dialog to connect to a meter
 * logging is not yet supported
 * there are no pretty graphs (not even ugly ones)
+* proper connection handling (disconnects/reconnect)
 * probably a lot of other features I can't think of right now :)
 
 ## Known bugs:
 * app sometimes fails to connect to Mooshimeter at startup and becomes unresponsive
+
+## Screenshots:
+![Main Screen](screenshots/main.png "Main Screen")
+![Settings](screenshots/settings.png "Settings")
+![App Cover](screenshots/cover.png "App Cover")

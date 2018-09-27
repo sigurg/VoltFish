@@ -70,3 +70,5 @@ HEADERS += \
     src/lib/writer.h
 
 INCLUDEPATH += include/
+
+unix: PKGCONFIG += zlib
