@@ -531,11 +531,10 @@ QStringList QMooshimeter::range_model(const Mapping &mapping) {
 
 
 
-std::string QMooshimeter::cmd(const QString &cmd) {
+std::future<std::string> QMooshimeter::cmd(const QString &cmd) {
     if (mm) {
         qDebug() << "CMD: " << cmd;
-        auto r = mm->cmd(cmd.toLatin1().data());
-        //return r.get();
+        return mm->cmd(cmd.toLatin1().data());
     }
-    return "";
+    return std::future<std::string>();
 }

@@ -208,5 +208,5 @@ private:
 
     QStringList range_model(const Mapping &mapping);
 
-    std::string cmd(const QString &cmd);
+    std::future<std::string> cmd(const QString &cmd);
 };
