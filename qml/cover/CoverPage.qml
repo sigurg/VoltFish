@@ -52,7 +52,7 @@ CoverBackground {
             spacing: Theme.paddingSmall
 
             Label {
-                text: mooshimeter.model_math()[mooshimeter.math_mode]
+                text: qsTrId(mooshimeter.model_math()[mooshimeter.math_mode])
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
             }

@@ -2,30 +2,30 @@ function mapping_to_str(m, a) {
     switch(m){
         case 0:
             if (a == 1)
-                return qsTr("Voltage A/C")
+                return qsTrId("mode-voltage-ac")
             else
-                return qsTr("Voltage D/C")
+                return qsTrId("mode-voltage-dc")
             break
         case 1:
             if (a == 1)
-                return qsTr("Current A/C")
+                return qsTrId("mode-current-ac")
             else
-                return qsTr("Current D/C")
+                return qsTrId("mode-current-dc")
             break
         case 2:
-            return qsTr("Temperature")
+            return qsTrId("mode-temperature")
             break
         case 3:
             if (a == 1)
-                return qsTr("Aux. Voltage A/C")
+                return qsTrId("mode-voltage-aux-ac")
             else
-                return qsTr("Aux. Voltage D/C")
+                return qsTrId("mode-voltage-aux-dc")
             break
         case 4:
-            return qsTr("Resistance")
+            return qsTrId("mode-resistance")
             break
         case 5:
-            return qsTr("Diode")
+            return qsTrId("mode-diode")
             break
         default:
             return ""

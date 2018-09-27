@@ -11,11 +11,11 @@ Page {
         anchors.fill: parent
 
         PageHeader {
-            title: qsTr("Settings")
+            title: qsTrId("settings")
         }
 
         Label {
-            text: qsTr("Note:\nrequires Mooshimeter firmware 147xxx")
+            text: qsTrId("firmware-note")
             width: parent.width
             wrapMode: TextInput.WordWrap
             padding: Theme.paddingMedium
@@ -24,7 +24,7 @@ Page {
         TextField {
             id: bt
             focus: true
-            label: qsTr("Bluetooth Address")
+            label: qsTrId("bluetooth-address")
             placeholderText: label
             text: mooshimeter.btaddr
             width: parent.width
@@ -34,11 +34,11 @@ Page {
         }
 
         ComboBox {
-            label: qsTr("Temperature Unit")
+            label: qsTrId("temperature-unit") + ":"
             currentIndex: mooshimeter.temp_unit
             menu: ContextMenu {
                 Repeater {
-                    model: [qsTr("Kelvin"), qsTr("Celcius"), qsTr("Fahrenheit")]
+                    model: [qsTrId("temp-unit-kelvin"), qsTrId("temp-unit-celcius"), qsTrId("temp-unit-fahrenheit")]
                     MenuItem {
                         text: modelData
                         onClicked: mooshimeter.temp_unit = index
@@ -54,15 +54,15 @@ Page {
             RemorsePopup { id: remorse }
 
             Button {
-                text: qsTr("Reboot Mooshimeter")
+                text: qsTrId("mooshimeter-reboot")
                 anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: remorse.execute(qsTr("Rebooting Mooshimeter"), mooshimeter.reboot)
+                onClicked: remorse.execute(qsTrId("remorse-reboot"), mooshimeter.reboot)
             }
 
             Button {
-                text: qsTr("Shipping Mode")
+                text: qsTrId("mooshimeter-shipping-mode")
                 anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: remorse.execute(qsTr("Enter shipping mode"), mooshimeter.shipping_mode)
+                onClicked: remorse.execute(qsTrId("remorse-shipping-mode"), mooshimeter.shipping_mode)
             }
         }
     }

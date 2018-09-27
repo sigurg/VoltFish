@@ -2,187 +2,131 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>About</name>
-    <message>
-        <source>About</source>
-        <translation type="unfinished"></translation>
+    <name></name>
+    <message id="about-text">
+        <source></source>
+        <translation>Inofficial Sailfish OS app for the &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter&lt;/a&gt; Bluetooth low energy multimeter.</translation>
     </message>
-    <message>
-        <source>Inofficial Sailfish OS app for the &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter&lt;/a&gt; Bluetooth low energy multimeter.</source>
-        <translation type="unfinished"></translation>
+    <message id="about">
+        <source></source>
+        <translation>About</translation>
     </message>
-</context>
-<context>
-    <name>MainPage</name>
-    <message>
-        <source>Sampling Rate</source>
-        <translation type="unfinished"></translation>
+    <message id="battery-abbrev">
+        <source></source>
+        <translation>Bat</translation>
     </message>
-    <message>
-        <source>Buffer Depth</source>
-        <translation type="unfinished"></translation>
+    <message id="mode-current-dc">
+        <source></source>
+        <translation>Current D/C</translation>
     </message>
-    <message>
-        <source>Bat: </source>
-        <translation type="unfinished"></translation>
+    <message id="mode-current-ac">
+        <source></source>
+        <translation>Current A/C</translation>
     </message>
-    <message>
-        <source>Current D/C</source>
-        <translation type="unfinished"></translation>
+    <message id="mode-voltage-aux-dc">
+        <source></source>
+        <translation>Aux. Voltage D/C</translation>
     </message>
-    <message>
-        <source>Current A/C</source>
-        <translation type="unfinished"></translation>
+    <message id="mode-voltage-aux-ac">
+        <source></source>
+        <translation>Aux. Voltage A/C</translation>
     </message>
-    <message>
-        <source>Aux. Voltage D/C</source>
-        <translation type="unfinished"></translation>
+    <message id="mode-resistance">
+        <source></source>
+        <translation>Resistance</translation>
     </message>
-    <message>
-        <source>Aux. Voltage A/C</source>
-        <translation type="unfinished"></translation>
+    <message id="mode-diode">
+        <source></source>
+        <translation>Diode</translation>
     </message>
-    <message>
-        <source>Resistance</source>
-        <translation type="unfinished"></translation>
+    <message id="mode-temperature">
+        <source></source>
+        <translation>Temperature</translation>
     </message>
-    <message>
-        <source>Diode</source>
-        <translation type="unfinished"></translation>
+    <message id="mode-voltage-dc">
+        <source></source>
+        <translation>Voltage D/C</translation>
     </message>
-    <message>
-        <source>Temperature</source>
-        <translation type="unfinished"></translation>
+    <message id="mode-voltage-ac">
+        <source></source>
+        <translation>Voltage A/C</translation>
     </message>
-    <message>
-        <source>Voltage D/C</source>
-        <translation type="unfinished"></translation>
+    <message id="sampling-rate">
+        <source></source>
+        <translation>Sampling Rate</translation>
     </message>
-    <message>
-        <source>Voltage A/C</source>
-        <translation type="unfinished"></translation>
+    <message id="buffer-depth">
+        <source></source>
+        <translation>Buffer Depth</translation>
     </message>
-    <message>
-        <source>About</source>
-        <translation type="unfinished"></translation>
+    <message id="firmware-note">
+        <source></source>
+        <translation>Note:
+requires Mooshimeter firmware 147xxx</translation>
     </message>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
+    <message id="bluetooth-address">
+        <source></source>
+        <translation>Bluetooth Address</translation>
     </message>
-    <message>
-        <source>Real Power</source>
-        <translation type="unfinished"></translation>
+    <message id="temperature-unit">
+        <source></source>
+        <translation>Temperature Unit</translation>
     </message>
-    <message>
-        <source>Apparent Power</source>
-        <translation type="unfinished"></translation>
+    <message id="temp-unit-kelvin">
+        <source></source>
+        <translation>Kelvin</translation>
     </message>
-    <message>
-        <source>Power Factor</source>
-        <translation type="unfinished"></translation>
+    <message id="temp-unit-celcius">
+        <source></source>
+        <translation>Celcius</translation>
     </message>
-    <message>
-        <source>Thermocouple (K)</source>
-        <translation type="unfinished"></translation>
+    <message id="temp-unit-fahrenheit">
+        <source></source>
+        <translation>Fahrenheit</translation>
     </message>
-</context>
-<context>
-    <name>QMooshimeter</name>
-    <message>
-        <source>out of range</source>
-        <translation type="unfinished"></translation>
+    <message id="mooshimeter-reboot">
+        <source></source>
+        <translation>Reboot Mooshimeter</translation>
     </message>
-    <message>
-        <source>invalid inputs</source>
-        <translation type="unfinished"></translation>
+    <message id="remorse-reboot">
+        <source></source>
+        <translation>Rebooting Mooshimeter</translation>
     </message>
-</context>
-<context>
-    <name>Settings</name>
-    <message>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
+    <message id="mooshimeter-shipping-mode">
+        <source></source>
+        <translation>Shipping Mode</translation>
     </message>
-    <message>
-        <source>Bluetooth Address</source>
-        <translation type="unfinished"></translation>
+    <message id="remorse-shipping-mode">
+        <source></source>
+        <translation>Entering Shipping Mode</translation>
     </message>
-    <message>
-        <source>Temperature Unit</source>
-        <translation type="unfinished"></translation>
+    <message id="math-real-power">
+        <source></source>
+        <translation>Real Power</translation>
     </message>
-    <message>
-        <source>Kelvin</source>
-        <translation type="unfinished"></translation>
+    <message id="math-apparent-power">
+        <source></source>
+        <translation>Apparent Power</translation>
     </message>
-    <message>
-        <source>Celcius</source>
-        <translation type="unfinished"></translation>
+    <message id="math-power-factor">
+        <source></source>
+        <translation>Power Factor</translation>
     </message>
-    <message>
-        <source>Fahrenheit</source>
-        <translation type="unfinished"></translation>
+    <message id="math-thermocouple-k">
+        <source></source>
+        <translation>Thermocouple (K)</translation>
     </message>
-    <message>
-        <source>Shipping Mode</source>
-        <translation type="unfinished"></translation>
+    <message id="out-of-range">
+        <source></source>
+        <translation>out of range</translation>
     </message>
-    <message>
-        <source>Reboot Mooshimeter</source>
-        <translation type="unfinished"></translation>
+    <message id="invalid-inputs">
+        <source></source>
+        <translation>invalid inputs</translation>
     </message>
-    <message>
-        <source>Enter shipping mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rebooting Mooshimeter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Note:
-requires Mooshimeter firmware 147xxx</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>util</name>
-    <message>
-        <source>Voltage A/C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Voltage D/C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Current A/C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Current D/C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Temperature</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Aux. Voltage A/C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Aux. Voltage D/C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Resistance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Diode</source>
-        <translation type="unfinished"></translation>
+    <message id="settings">
+        <source></source>
+        <translation>Settings</translation>
     </message>
 </context>
 </TS>

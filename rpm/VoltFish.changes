@@ -1,0 +1,9 @@
+* Mon Sep 24 2018 sigurg <sigurg@users.noreply.github.com> 0.1.2-1
+- fixed translations
+
+* Fri Sep 21 2018 sigurg <sigurg@users.noreply.github.com> 0.1.1-1
+- renamed app to "VoltFish"
+- added spanish translations (thanks to carlosgonzz)
+
+* Wed Sep 19 2018 sigurg <sigurg@users.noreply.github.com> 0.1-1
+- initial release

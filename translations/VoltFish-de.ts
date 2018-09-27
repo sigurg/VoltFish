@@ -2,188 +2,131 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>About</name>
-    <message>
-        <source>About</source>
+    <name></name>
+    <message id="about">
+        <source></source>
         <translation>Über</translation>
     </message>
-    <message>
-        <source>Inofficial Sailfish OS app for the &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter&lt;/a&gt; Bluetooth low energy multimeter.</source>
+    <message id="mode-voltage-ac">
+        <source></source>
+        <translation>Wechselspannung</translation>
+    </message>
+    <message id="mode-voltage-dc">
+        <source></source>
+        <translation>Gleichspannung</translation>
+    </message>
+    <message id="mode-current-ac">
+        <source></source>
+        <translation>Wechselstrom</translation>
+    </message>
+    <message id="mode-current-dc">
+        <source></source>
+        <translation>Gleichstrom</translation>
+    </message>
+    <message id="mode-temperature">
+        <source></source>
+        <translation>Temperatur</translation>
+    </message>
+    <message id="mode-voltage-aux-ac">
+        <source></source>
+        <translation>Präz. Wechselspannung</translation>
+    </message>
+    <message id="mode-voltage-aux-dc">
+        <source></source>
+        <translation>Präz. Gleichspannung</translation>
+    </message>
+    <message id="mode-resistance">
+        <source></source>
+        <translation>Widerstand</translation>
+    </message>
+    <message id="mode-diode">
+        <source></source>
+        <translation>Diode</translation>
+    </message>
+    <message id="about-text">
+        <source></source>
         <translation>Inoffizielle Sailfish OS App für das &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter&lt;/a&gt; Bluetooth Low Energy Multimeter.</translation>
     </message>
-</context>
-<context>
-    <name>MainPage</name>
-    <message>
-        <source>Sampling Rate</source>
+    <message id="battery-abbrev">
+        <source></source>
+        <translation>Bat</translation>
+    </message>
+    <message id="sampling-rate">
+        <source></source>
         <translation>Abtastrate</translation>
     </message>
-    <message>
-        <source>Buffer Depth</source>
+    <message id="buffer-depth">
+        <source></source>
         <translation>Speichertiefe</translation>
     </message>
-    <message>
-        <source>Bat: </source>
-        <translation>Bat: </translation>
-    </message>
-    <message>
-        <source>Current D/C</source>
-        <translation>Gleichstrom</translation>
-    </message>
-    <message>
-        <source>Current A/C</source>
-        <translation>Wechselstrom</translation>
-    </message>
-    <message>
-        <source>Aux. Voltage D/C</source>
-        <translation>Präz. Gleichspannung</translation>
-    </message>
-    <message>
-        <source>Aux. Voltage A/C</source>
-        <translation>Präz. Wechselspannung</translation>
-    </message>
-    <message>
-        <source>Resistance</source>
-        <translation>Widerstand</translation>
-    </message>
-    <message>
-        <source>Diode</source>
-        <translation>Diode</translation>
-    </message>
-    <message>
-        <source>Temperature</source>
-        <translation>Temperatur</translation>
-    </message>
-    <message>
-        <source>Voltage D/C</source>
-        <translation>Gleichspannung</translation>
-    </message>
-    <message>
-        <source>Voltage A/C</source>
-        <translation>Wechselspannung</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation>Über</translation>
-    </message>
-    <message>
-        <source>Settings</source>
+    <message id="settings">
+        <source></source>
         <translation>Einstellungen</translation>
     </message>
-    <message>
-        <source>Real Power</source>
-        <translation>Wirkleistung</translation>
-    </message>
-    <message>
-        <source>Apparent Power</source>
-        <translation>Scheinleistung</translation>
-    </message>
-    <message>
-        <source>Power Factor</source>
-        <translation>Leistungsfaktor</translation>
-    </message>
-    <message>
-        <source>Thermocouple (K)</source>
-        <translation>Thermoelement (K)</translation>
-    </message>
-</context>
-<context>
-    <name>QMooshimeter</name>
-    <message>
-        <source>out of range</source>
-        <translation>Messw. überschr.</translation>
-    </message>
-    <message>
-        <source>invalid inputs</source>
-        <translation>ungültige Eingänge</translation>
-    </message>
-</context>
-<context>
-    <name>Settings</name>
-    <message>
-        <source>Settings</source>
-        <translation>Einstellungen</translation>
-    </message>
-    <message>
-        <source>Bluetooth Address</source>
-        <translation>Bluetooth-Adresse</translation>
-    </message>
-    <message>
-        <source>Temperature Unit</source>
-        <translation>Temperatureinheit</translation>
-    </message>
-    <message>
-        <source>Kelvin</source>
-        <translation>Kelvin</translation>
-    </message>
-    <message>
-        <source>Celcius</source>
-        <translation>Celsius</translation>
-    </message>
-    <message>
-        <source>Fahrenheit</source>
-        <translation>Fahrenheit</translation>
-    </message>
-    <message>
-        <source>Shipping Mode</source>
-        <translation>Transportmodus</translation>
-    </message>
-    <message>
-        <source>Reboot Mooshimeter</source>
-        <translation>Mooshimeter neustarten</translation>
-    </message>
-    <message>
-        <source>Enter shipping mode</source>
-        <translation>Transportmodus aktivieren</translation>
-    </message>
-    <message>
-        <source>Rebooting Mooshimeter</source>
-        <translation>Neustart des Mooshimeter</translation>
-    </message>
-    <message>
-        <source>Note:
-requires Mooshimeter firmware 147xxx</source>
-        <translation>Info:
+    <message id="firmware-note">
+        <source></source>
+        <translation>Hinweis:
 benötigt Mooshimeter Firmware 147xxx</translation>
     </message>
-</context>
-<context>
-    <name>util</name>
-    <message>
-        <source>Voltage A/C</source>
-        <translation>Wechselspannung</translation>
+    <message id="bluetooth-address">
+        <source></source>
+        <translation>Bluetooth Adresse</translation>
     </message>
-    <message>
-        <source>Voltage D/C</source>
-        <translation>Gleichspannung</translation>
+    <message id="temperature-unit">
+        <source></source>
+        <translation>Temperatur Einheit</translation>
     </message>
-    <message>
-        <source>Current A/C</source>
-        <translation>Wechselstrom</translation>
+    <message id="temp-unit-kelvin">
+        <source></source>
+        <translation>Kelvin</translation>
     </message>
-    <message>
-        <source>Current D/C</source>
-        <translation>Gleichstrom</translation>
+    <message id="temp-unit-celcius">
+        <source></source>
+        <translation>Celcius</translation>
     </message>
-    <message>
-        <source>Temperature</source>
-        <translation>Temperatur</translation>
+    <message id="temp-unit-fahrenheit">
+        <source></source>
+        <translation>Fahenheit</translation>
     </message>
-    <message>
-        <source>Aux. Voltage A/C</source>
-        <translation>Präz. Wechselspannung</translation>
+    <message id="mooshimeter-reboot">
+        <source></source>
+        <translation>Mooshimeter neustarten</translation>
     </message>
-    <message>
-        <source>Aux. Voltage D/C</source>
-        <translation>Präz. Gleichspannung</translation>
+    <message id="remorse-reboot">
+        <source></source>
+        <translation>Mooshimeter Neustart</translation>
     </message>
-    <message>
-        <source>Resistance</source>
-        <translation>Widerstand</translation>
+    <message id="mooshimeter-shipping-mode">
+        <source></source>
+        <translation>Transportmodus</translation>
     </message>
-    <message>
-        <source>Diode</source>
-        <translation>Diode</translation>
+    <message id="remorse-shipping-mode">
+        <source></source>
+        <translation>Transportmodus aktivieren</translation>
+    </message>
+    <message id="math-real-power">
+        <source></source>
+        <translation>Wirkleistung</translation>
+    </message>
+    <message id="math-apparent-power">
+        <source></source>
+        <translation>Scheinleistung</translation>
+    </message>
+    <message id="math-power-factor">
+        <source></source>
+        <translation>Leistungsfaktor</translation>
+    </message>
+    <message id="math-thermocouple-k">
+        <source></source>
+        <translation>Thermoelement (K)</translation>
+    </message>
+    <message id="out-of-range">
+        <source></source>
+        <translation>Messw. überschr.</translation>
+    </message>
+    <message id="invalid-inputs">
+        <source></source>
+        <translation>ungültige Eingänge</translation>
     </message>
 </context>
 </TS>

@@ -13,7 +13,7 @@
 TARGET = VoltFish
 
 CONFIG += sailfishapp
-CONFIG += c++11
+CONFIG += c++17
 
 DEFINES += IS_SAILFISH_OS
 CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
@@ -31,32 +31,31 @@ SOURCES += src/main.cpp \
 
 DISTFILES += \
     qml/cover/CoverPage.qml \
-    rpm/VoltFish.changes.in \
-    rpm/VoltFish.changes.run.in \
+    rpm/VoltFish.changes \
     rpm/VoltFish.spec \
     rpm/VoltFish.yaml \
     translations/*.ts \
     VoltFish.desktop \
     qml/pages/MainPage.qml \
-    qml/pages/Settings.qml \
     qml/cover/util.js \
     qml/lib/ScreenBlank.qml \
-    qml/pages/About.qml \
     qml/pages/Graph.qml \
-    qml/VoltFish.qml
+    qml/VoltFish.qml \
+    qml/pages/settings.qml \
+    qml/pages/about.qml
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-CONFIG += sailfishapp_i18n
+CONFIG += sailfishapp_i18n \
+    sailfishapp_i18n_idbased
 
 # German translation is enabled as an example. If you aren't
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/VoltFish-de.ts
-TRANSLATIONS += translations/VoltFish-es.ts
+TRANSLATIONS += translations/*.ts
 
 HEADERS += \
     src/qmooshimeter.h \

@@ -4,12 +4,6 @@
 
 #define APP_VERSION "0.1.2"
 
-// pages names for pull-down menu
-__attribute__((unused)) constexpr auto PAGE_NAMES{
-    QT_TRANSLATE_NOOP("MainPage", "About"),
-    QT_TRANSLATE_NOOP("MainPage", "Settings")
-};
-
 int main(int argc, char *argv[])
 {
     QGuiApplication *app = SailfishApp::application(argc, argv);

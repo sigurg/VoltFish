@@ -12,7 +12,7 @@ Page {
         spacing: Theme.paddingLarge
 
         PageHeader {
-            title: qsTr("About")
+            title: qsTrId("about")
         }
 
 
@@ -23,14 +23,14 @@ Page {
         }
 
         Text {
-            text: qsTr(appName + " v" + appVersion)
+            text: appName + " v" + appVersion
             color: Theme.primaryColor
             font.pixelSize: Theme.fontSizeLarge
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Text {
-            text: qsTr("Inofficial Sailfish OS app for the <a href=\"\https://moosh.im/mooshimeter/\">Mooshimeter</a> Bluetooth low energy multimeter.")
+            text: qsTrId("about-text")
             width: parent.width
             color: Theme.secondaryColor
             font.pixelSize: Theme.fontSizeMedium

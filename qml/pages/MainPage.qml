@@ -39,9 +39,9 @@ Page {
 
         PullDownMenu {
             Repeater {
-                model: ["About", "Settings"]
+                model: ["about", "settings"]
                 MenuItem {
-                    text: qsTr(modelData)
+                    text: qsTrId(modelData)
                     onClicked: pageStack.push(Qt.resolvedUrl(modelData + ".qml"))
                 }
             }
@@ -66,7 +66,7 @@ Page {
                     anchors.margins: 20
                     y: Theme.horizontalPageMargin
                     visible: (mooshimeter.bat_percent > 0)
-                    text: qsTr("Bat: ") + mooshimeter.bat_percent + "%"
+                    text: qsTrId("battery-abbrev") + ": " + mooshimeter.bat_percent + "%"
                     color: Theme.secondaryColor
                 }
             }
@@ -91,49 +91,49 @@ Page {
 
                         menu: ContextMenu {
                             MenuItem {
-                                text: qsTr("Current D/C")
+                                text: qsTrId("mode-current-dc")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 1
                                     mooshimeter.ch1_analysis = 0
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Current A/C")
+                                text: qsTrId("mode-current-ac")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 1
                                     mooshimeter.ch1_analysis = 1
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Aux. Voltage D/C")
+                                text: qsTrId("mode-voltage-aux-dc")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 3
                                     mooshimeter.ch1_analysis = 0
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Aux. Voltage A/C")
+                                text: qsTrId("mode-voltage-aux-ac")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 3
                                     mooshimeter.ch1_analysis = 1
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Resistance")
+                                text: qsTrId("mode-resistance")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 4
                                     mooshimeter.ch1_analysis = 0
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Diode")
+                                text: qsTrId("mode-diode")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 5
                                     mooshimeter.ch1_analysis = 0
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Temperature")
+                                text: qsTrId("mode-temperature")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 2
                                     mooshimeter.ch1_analysis = 0
@@ -178,49 +178,49 @@ Page {
                         id: ch2_mode
                         menu: ContextMenu {
                             MenuItem {
-                                text: qsTr("Voltage D/C")
+                                text: qsTrId("mode-voltage-dc")
                                 onClicked: {
                                     mooshimeter.ch2_mapping = 0
                                     mooshimeter.ch2_analysis = 0
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Voltage A/C")
+                                text: qsTrId("mode-voltage-ac")
                                 onClicked: {
                                     mooshimeter.ch2_mapping = 0
                                     mooshimeter.ch2_analysis = 1
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Aux. Voltage D/C")
+                                text: qsTrId("mode-voltage-aux-dc")
                                 onClicked: {
                                     mooshimeter.ch2_mapping = 3
                                     mooshimeter.ch2_analysis = 0
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Aux. Voltage A/C")
+                                text: qsTrId("mode-voltage-aux-ac")
                                 onClicked: {
                                     mooshimeter.ch2_mapping = 3
                                     mooshimeter.ch2_analysis = 1
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Resistance")
+                                text: qsTrId("mode-resistance")
                                 onClicked: {
                                     mooshimeter.ch2_mapping = 4
                                     mooshimeter.ch2_analysis = 0
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Diode")
+                                text: qsTrId("mode-diode")
                                 onClicked: {
                                     mooshimeter.ch2_mapping = 5
                                     mooshimeter.ch2_analysis = 0
                                 }
                             }
                             MenuItem {
-                                text: qsTr("Temperature")
+                                text: qsTrId("mode-temperature")
                                 onClicked: {
                                     mooshimeter.ch2_mapping = 2
                                     mooshimeter.ch2_analysis = 0
@@ -254,7 +254,7 @@ Page {
                     id: math_label
                     anchors.rightMargin: 20
                     x: Theme.horizontalPageMargin
-                    text: qsTr(mooshimeter.math)
+                    text: qsTrId(mooshimeter.math)
                     color: Theme.primaryColor
                     font.pixelSize: 70
                     font.bold: true
@@ -269,7 +269,7 @@ Page {
                         Repeater {
                             model: mooshimeter.model_math()
                             MenuItem {
-                                text: qsTr(modelData)
+                                text: qsTrId(modelData)
                                 onClicked: mooshimeter.math_mode = index
                             }
                         }
@@ -282,7 +282,7 @@ Page {
                 ComboBox {
                     id: smpl_rate
                     width: page.width/1.8
-                    label: qsTr("Sampling Rate")
+                    label: qsTrId("sampling-rate")
                     currentIndex: 3
 
                     menu: ContextMenu {
@@ -299,7 +299,7 @@ Page {
                 ComboBox {
                     id: buf_depth
                     width: page.width/2
-                    label: qsTr("Buffer Depth")
+                    label: qsTrId("buffer-depth")
                     currentIndex: 2
 
                     menu: ContextMenu {
