@@ -11,7 +11,7 @@ This app is in early alpha stage, and has only been tested in my phone (Aquafish
 * select input channels and ranges
 * "math" channel (power calculations and K-Thermocouple)
 * battery level indicator
-* temperatur units (Celcius / Kelvin / Fahrenheit)
+* temperature unit conversion (Celcius / Kelvin / Fahrenheit)
 
 ## What doesn't work:
 * there is no scanning/connection dialog to connect to a meter
