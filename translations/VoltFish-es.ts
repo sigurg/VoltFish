@@ -65,7 +65,8 @@
     </message>
     <message id="firmware-note">
         <source></source>
-        <translation>nota del programaLógico</translation>
+        <translation>nota: 
+Mooshimeter requiere programaLógico 147xxx</translation>
     </message>
     <message id="bluetooth-address">
         <source></source>
