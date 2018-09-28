@@ -45,7 +45,7 @@
     </message>
     <message id="about-text">
         <source></source>
-        <translation>Un cliente no oficial para Sailfish OS de &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter.&lt;/a&gt; Multímetro de bajo consumo de energía Bluetooth</translation>
+        <translation>Un cliente no oficial de &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter.&lt;/a&gt; para Sailfish OS. Un multímetro Bluetooth de bajo consumo de energía</translation>
     </message>
     <message id="battery-abbrev">
         <source></source>
@@ -53,11 +53,11 @@
     </message>
     <message id="sampling-rate">
         <source></source>
-        <translation>Frecuencia de muestreo</translation>
+        <translation>Frecuencia muestreo</translation>
     </message>
     <message id="buffer-depth">
         <source></source>
-        <translation>Profundidad de búfer</translation>
+        <translation>Profundidad búfer</translation>
     </message>
     <message id="settings">
         <source></source>
@@ -65,7 +65,8 @@
     </message>
     <message id="firmware-note">
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation>nota: 
+Mooshimeter requiere programaLógico 147xxx</translation>
     </message>
     <message id="bluetooth-address">
         <source></source>
@@ -101,7 +102,7 @@
     </message>
     <message id="remorse-shipping-mode">
         <source></source>
-        <translation>Entrando modo envío</translation>
+        <translation>Entrando a modo envío</translation>
     </message>
     <message id="math-real-power">
         <source></source>
@@ -129,11 +130,11 @@
     </message>
     <message id="button-report-issue">
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation>Bichos</translation>
     </message>
     <message id="button-github-page">
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation>Github</translation>
     </message>
 </context>
 </TS>
