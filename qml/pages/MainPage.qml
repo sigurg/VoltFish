@@ -17,7 +17,11 @@ Page {
         running: false
         repeat: false
         interval: 500
-        onTriggered: mooshimeter.connect()
+        onTriggered: if (mooshimeter.btaddr != "")
+                         mooshimeter.connect()
+                     else
+                         pageStack.push(Qt.resolvedUrl("settings.qml"))
+
     }
 
     /*
@@ -50,8 +54,7 @@ Page {
         contentHeight: column.height
 
         Component.onCompleted: {
-            if (mooshimeter.btaddr != "")
-                connectTimer.start();
+            connectTimer.start();
         }
 
         Column {
