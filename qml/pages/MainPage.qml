@@ -66,6 +66,8 @@ Page {
                     anchors.margins: 20
                     y: Theme.horizontalPageMargin
                     visible: (mooshimeter.bat_percent > 0)
+                    //% "Bat"
+                    //: battery indicator label
                     text: qsTrId("battery-abbrev") + ": " + mooshimeter.bat_percent + "%"
                     color: Theme.secondaryColor
                 }
@@ -91,6 +93,8 @@ Page {
 
                         menu: ContextMenu {
                             MenuItem {
+                                //% "Current D/C"
+                                //: measurement mode: electrical current (D/C)
                                 text: qsTrId("mode-current-dc")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 1
@@ -98,6 +102,8 @@ Page {
                                 }
                             }
                             MenuItem {
+                                //% "Current A/C"
+                                //: measurement mode: electrical current (A/C)
                                 text: qsTrId("mode-current-ac")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 1
@@ -105,6 +111,8 @@ Page {
                                 }
                             }
                             MenuItem {
+                                //% "Aux. Voltage D/C"
+                                //: measurement mode: high precision voltage (D/C)
                                 text: qsTrId("mode-voltage-aux-dc")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 3
@@ -112,6 +120,8 @@ Page {
                                 }
                             }
                             MenuItem {
+                                //% "Aux. Voltage A/C"
+                                //: measurement mode: high precision voltage (A/C)
                                 text: qsTrId("mode-voltage-aux-ac")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 3
@@ -119,6 +129,8 @@ Page {
                                 }
                             }
                             MenuItem {
+                                //% "Resistance"
+                                //: measurement mode: electrical resistance
                                 text: qsTrId("mode-resistance")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 4
@@ -126,6 +138,8 @@ Page {
                                 }
                             }
                             MenuItem {
+                                //% "Diode"
+                                //: measurement mode: diode forward voltage
                                 text: qsTrId("mode-diode")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 5
@@ -133,6 +147,8 @@ Page {
                                 }
                             }
                             MenuItem {
+                                //% "Temperature"
+                                //: measurement mode: temperature
                                 text: qsTrId("mode-temperature")
                                 onClicked: {
                                     mooshimeter.ch1_mapping = 2
@@ -178,6 +194,8 @@ Page {
                         id: ch2_mode
                         menu: ContextMenu {
                             MenuItem {
+                                //% "Voltage D/C"
+                                //: measurement mode: voltage (D/C)
                                 text: qsTrId("mode-voltage-dc")
                                 onClicked: {
                                     mooshimeter.ch2_mapping = 0
@@ -185,6 +203,8 @@ Page {
                                 }
                             }
                             MenuItem {
+                                //% "Voltage A/C"
+                                //: measurement mode: voltage (A/C)
                                 text: qsTrId("mode-voltage-ac")
                                 onClicked: {
                                     mooshimeter.ch2_mapping = 0
@@ -282,6 +302,8 @@ Page {
                 ComboBox {
                     id: smpl_rate
                     width: page.width/1.8
+                    //% "Sample Rate"
+                    //: measurement sample rate selection
                     label: qsTrId("sampling-rate")
                     currentIndex: 3
 
@@ -299,6 +321,8 @@ Page {
                 ComboBox {
                     id: buf_depth
                     width: page.width/2
+                    //% "Buffer Depth"
+                    //: measurement buffer depth selection
                     label: qsTrId("buffer-depth")
                     currentIndex: 2
 
