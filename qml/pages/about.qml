@@ -32,7 +32,7 @@ Page {
         }
 
         Text {
-            //% "Inofficial Sailfish OS app for the &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter&lt;/a&gt; Bluetooth low energy multimeter.
+            //% "Inofficial Sailfish OS app for the &lt;a href=&quot;https://moosh.im/mooshimeter/&quot;&gt;Mooshimeter&lt;/a&gt; Bluetooth low energy multimeter."
             //: app description
             text: qsTrId("about-text")
             width: parent.width
