@@ -95,67 +95,37 @@ Page {
                         width: page.width/1.8
 
                         menu: ContextMenu {
-                            MenuItem {
-                                //% "Current D/C"
-                                //: measurement mode: electrical current (D/C)
-                                text: qsTrId("mode-current-dc")
-                                onClicked: {
-                                    mooshimeter.ch1_mapping = 1
-                                    mooshimeter.ch1_analysis = 0
-                                }
-                            }
-                            MenuItem {
-                                //% "Current A/C"
-                                //: measurement mode: electrical current (A/C)
-                                text: qsTrId("mode-current-ac")
-                                onClicked: {
-                                    mooshimeter.ch1_mapping = 1
-                                    mooshimeter.ch1_analysis = 1
-                                }
-                            }
-                            MenuItem {
-                                //% "Aux. Voltage D/C"
-                                //: measurement mode: high precision voltage (D/C)
-                                text: qsTrId("mode-voltage-aux-dc")
-                                onClicked: {
-                                    mooshimeter.ch1_mapping = 3
-                                    mooshimeter.ch1_analysis = 0
-                                }
-                            }
-                            MenuItem {
-                                //% "Aux. Voltage A/C"
-                                //: measurement mode: high precision voltage (A/C)
-                                text: qsTrId("mode-voltage-aux-ac")
-                                onClicked: {
-                                    mooshimeter.ch1_mapping = 3
-                                    mooshimeter.ch1_analysis = 1
-                                }
-                            }
-                            MenuItem {
-                                //% "Resistance"
-                                //: measurement mode: electrical resistance
-                                text: qsTrId("mode-resistance")
-                                onClicked: {
-                                    mooshimeter.ch1_mapping = 4
-                                    mooshimeter.ch1_analysis = 0
-                                }
-                            }
-                            MenuItem {
-                                //% "Diode"
-                                //: measurement mode: diode forward voltage
-                                text: qsTrId("mode-diode")
-                                onClicked: {
-                                    mooshimeter.ch1_mapping = 5
-                                    mooshimeter.ch1_analysis = 0
-                                }
-                            }
-                            MenuItem {
-                                //% "Temperature"
-                                //: measurement mode: temperature
-                                text: qsTrId("mode-temperature")
-                                onClicked: {
-                                    mooshimeter.ch1_mapping = 2
-                                    mooshimeter.ch1_analysis = 0
+                            Repeater {
+                                model: [
+                                    //% "Current D/C"
+                                    //: measurement mode: electrical current (D/C)
+                                    {"label":qsTrId("mode-current-dc"), "mapping":1, "analysis":0},
+                                    //% "Current A/C"
+                                    //: measurement mode: electrical current (A/C)
+                                    {"label":qsTrId("mode-current-ac"), "mapping":1, "analysis":1},
+                                    //% "Aux. Voltage D/C"
+                                    //: measurement mode: high precision voltage (D/C)
+                                    {"label":qsTrId("mode-voltage-aux-dc"), "mapping":3, "analysis":0},
+                                    //% "Aux. Voltage A/C"
+                                    //: measurement mode: high precision voltage (A/C)
+                                    {"label":qsTrId("mode-voltage-aux-ac"), "mapping":3, "analysis":1},
+                                    //% "Resistance"
+                                    //: measurement mode: electrical resistance
+                                    {"label":qsTrId("mode-resistance"), "mapping":4, "analysis":0},
+                                    //% "Diode"
+                                    //: measurement mode: diode forward voltage
+                                    {"label":qsTrId("mode-diode"), "mapping":5,"analysis":0},
+                                    //% "Temperature"
+                                    //: measurement mode: temperature
+                                    {"label":qsTrId("mode-temperature"), "mapping":2, "analysis":0}
+                                ]
+
+                                MenuItem {
+                                    text: modelData.label
+                                    onClicked: {
+                                        mooshimeter.ch1_mapping = modelData.mapping
+                                        mooshimeter.ch1_analysis = modelData.analysis
+                                    }
                                 }
                             }
                         }
@@ -193,60 +163,31 @@ Page {
 
                 Row {
                     ComboBox {
-                        width: page.width/1.8
                         id: ch2_mode
+                        width: page.width/1.8
+
                         menu: ContextMenu {
-                            MenuItem {
-                                //% "Voltage D/C"
-                                //: measurement mode: voltage (D/C)
-                                text: qsTrId("mode-voltage-dc")
-                                onClicked: {
-                                    mooshimeter.ch2_mapping = 0
-                                    mooshimeter.ch2_analysis = 0
-                                }
-                            }
-                            MenuItem {
-                                //% "Voltage A/C"
-                                //: measurement mode: voltage (A/C)
-                                text: qsTrId("mode-voltage-ac")
-                                onClicked: {
-                                    mooshimeter.ch2_mapping = 0
-                                    mooshimeter.ch2_analysis = 1
-                                }
-                            }
-                            MenuItem {
-                                text: qsTrId("mode-voltage-aux-dc")
-                                onClicked: {
-                                    mooshimeter.ch2_mapping = 3
-                                    mooshimeter.ch2_analysis = 0
-                                }
-                            }
-                            MenuItem {
-                                text: qsTrId("mode-voltage-aux-ac")
-                                onClicked: {
-                                    mooshimeter.ch2_mapping = 3
-                                    mooshimeter.ch2_analysis = 1
-                                }
-                            }
-                            MenuItem {
-                                text: qsTrId("mode-resistance")
-                                onClicked: {
-                                    mooshimeter.ch2_mapping = 4
-                                    mooshimeter.ch2_analysis = 0
-                                }
-                            }
-                            MenuItem {
-                                text: qsTrId("mode-diode")
-                                onClicked: {
-                                    mooshimeter.ch2_mapping = 5
-                                    mooshimeter.ch2_analysis = 0
-                                }
-                            }
-                            MenuItem {
-                                text: qsTrId("mode-temperature")
-                                onClicked: {
-                                    mooshimeter.ch2_mapping = 2
-                                    mooshimeter.ch2_analysis = 0
+                            Repeater {
+                                model: [
+                                    //% "Voltage D/C"
+                                    //: measurement mode: voltage (D/C)
+                                    {"label":qsTrId("mode-voltage-dc"), "mapping":0, "analysis":0},
+                                    //% "Voltage A/C"
+                                    //: measurement mode: voltage (A/C)
+                                    {"label":qsTrId("mode-voltage-ac"), "mapping":0, "analysis":1},
+                                    {"label":qsTrId("mode-voltage-aux-dc"), "mapping":3, "analysis":0},
+                                    {"label":qsTrId("mode-voltage-aux-ac"), "mapping":3, "analysis":1},
+                                    {"label":qsTrId("mode-resistance"), "mapping":4, "analysis":0},
+                                    {"label":qsTrId("mode-diode"), "mapping":5,"analysis":0},
+                                    {"label":qsTrId("mode-temperature"), "mapping":2, "analysis":0}
+                                ]
+
+                                MenuItem {
+                                    text: modelData.label
+                                    onClicked: {
+                                        mooshimeter.ch2_mapping = modelData.mapping
+                                        mooshimeter.ch2_analysis = modelData.analysis
+                                    }
                                 }
                             }
                         }
