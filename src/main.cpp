@@ -1,5 +1,6 @@
 #include <QtQuick>
 #include <sailfishapp.h>
+#include "ble-scanner.h"
 #include "qmooshimeter.h"
 
 #define APP_VERSION "0.1.2"
@@ -12,6 +13,10 @@ int main(int argc, char *argv[])
 
     QMooshimeter mm;
     ctx->setContextProperty("mooshimeter", &mm);
+
+    BLEScanner ble;
+    ctx->setContextProperty("blescanner", &ble);
+
     ctx->setContextProperty("appName", "VoltFish");
     ctx->setContextProperty("appVersion", APP_VERSION);
 

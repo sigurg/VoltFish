@@ -18,7 +18,10 @@ CONFIG += c++17
 DEFINES += IS_SAILFISH_OS
 CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
 
+QT += bluetooth
+
 SOURCES += src/main.cpp \
+    src/ble-scanner.cpp \
     src/qmooshimeter.cpp \
     src/lib/ble.cc \
     src/lib/btcompat.cc \
@@ -58,6 +61,7 @@ CONFIG += sailfishapp_i18n \
 TRANSLATIONS += translations/*.ts
 
 HEADERS += \
+    src/ble-scanner.h \
     src/qmooshimeter.h \
     src/lib/ble.h \
     src/lib/config_tree.h \
@@ -67,7 +71,18 @@ HEADERS += \
     src/lib/reader.h \
     src/lib/response.h \
     src/lib/util.h \
-    src/lib/writer.h
+    src/lib/writer.h \
+    include/bluetooth/bluetooth.h \
+    include/bluetooth/bnep.h \
+    include/bluetooth/cmtp.h \
+    include/bluetooth/hci.h \
+    include/bluetooth/hci_lib.h \
+    include/bluetooth/hidp.h \
+    include/bluetooth/l2cap.h \
+    include/bluetooth/rfcomm.h \
+    include/bluetooth/sco.h \
+    include/bluetooth/sdp.h \
+    include/bluetooth/sdp_lib.h
 
 INCLUDEPATH += include/
 
