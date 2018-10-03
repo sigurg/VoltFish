@@ -1,4 +1,5 @@
-* Thu Sep 27 2018 sigurg <sigurg@users.noreply.github.com> 0.1.3-1
+* Wed Oct 03 2018 sigurg <sigurg@users.noreply.github.com> 0.2-1
+- added scanning for BLE devices
 - added note that 147xxx firmware is required
 - german translation (thanks to sailfishmods)
 - reworked connection at startup, so app will no longer hang without GUI being visible

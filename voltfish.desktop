@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Icon=VoltFish
-Exec=invoker -s --type=silica-qt5 /usr/bin/VoltFish
+Icon=voltfish
+Exec=invoker -s --type=silica-qt5 /usr/bin/voltfish
 Name=VoltFish

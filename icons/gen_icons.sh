@@ -1,6 +1,6 @@
 #!/bin/sh
 
-APP_NAME=VoltFish
+APP_NAME=voltfish
 cd "$(dirname "$(readlink -f "$0")")"
 
 for i in 86x86 108x108 128x128

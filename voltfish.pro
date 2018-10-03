@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = VoltFish
+TARGET = voltfish
 
 CONFIG += sailfishapp
 CONFIG += c++17
@@ -34,19 +34,19 @@ SOURCES += src/main.cpp \
 
 DISTFILES += \
     qml/cover/CoverPage.qml \
-    rpm/VoltFish.changes \
-    rpm/VoltFish.spec \
-    rpm/VoltFish.yaml \
+    rpm/voltfish.changes \
+    rpm/voltfish.spec \
+    rpm/voltfish.yaml \
     translations/*.ts \
-    VoltFish.desktop \
     qml/pages/MainPage.qml \
     qml/cover/util.js \
     qml/lib/ScreenBlank.qml \
     qml/pages/Graph.qml \
-    qml/VoltFish.qml \
+    qml/voltfish.qml \
     qml/pages/settings.qml \
     qml/pages/about.qml \
-    qml/pages/discovery.qml
+    qml/pages/discovery.qml \
+    voltfish.desktop
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
