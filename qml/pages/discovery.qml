@@ -29,12 +29,14 @@ Page {
         }
 
         SilicaListView {
-            anchors.top: header.bottom
             width: parent.width - 2*Theme.paddingMedium
+            height: page.height - header.height
             id: view
             currentIndex: -1
             model: blescanner.devicesList
             anchors.horizontalCenter: parent.horizontalCenter
+
+            VerticalScrollDecorator {}
 
             ViewPlaceholder {
                 enabled: view.count == 0
@@ -45,6 +47,7 @@ Page {
 
             delegate: BackgroundItem {
                 id: backgroundItem
+                height: Theme.fontSizeExtraLarge * 2
 
                 ListView.onAdd: AddAnimation {
                     target: backgroundItem
@@ -52,7 +55,6 @@ Page {
                 ListView.onRemove: RemoveAnimation {
                     target: backgroundItem
                 }
-
 
                 Column {
                     Label {
