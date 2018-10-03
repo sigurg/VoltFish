@@ -17,11 +17,12 @@ Page {
         running: false
         repeat: false
         interval: 500
-        onTriggered: if (mooshimeter.btaddr != "")
-                         mooshimeter.connect()
-                     else
-                         pageStack.push(Qt.resolvedUrl("settings.qml"))
-
+        onTriggered: {
+            if (mooshimeter.btaddr != "")
+                mooshimeter.connect()
+            else
+                pageStack.push(Qt.resolvedUrl("discovery.qml"))
+        }
     }
 
     /*

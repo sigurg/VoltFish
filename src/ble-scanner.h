@@ -7,14 +7,24 @@
 
 class BLEDevice: public QObject {
     Q_OBJECT
-    Q_PROPERTY(QString name MEMBER name);
-    Q_PROPERTY(QString address MEMBER address);
+    Q_PROPERTY(QString name MEMBER name NOTIFY deviceChanged);
+    Q_PROPERTY(QString address MEMBER address NOTIFY deviceChanged);
+
+Q_SIGNALS:
+    void deviceChanged();
 
 public:
+    BLEDevice(const QString &name, const QString &address):
+        name(name),
+        address(address) {
+        emit deviceChanged();
+    };
+
     BLEDevice(const QBluetoothDeviceInfo &d):
         name(d.name()),
-        address(d.address().toString())
-    {};
+        address(d.address().toString()) {
+        emit deviceChanged();
+    };
 
 private:
     QString name;

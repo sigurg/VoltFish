@@ -161,5 +161,20 @@ requires Mooshimeter firmware 147xxx</translation>
         <source>View source on Github</source>
         <translation>View source on Github</translation>
     </message>
+    <message id="discovery-title">
+        <source>Connect your Mooshimeter</source>
+        <extracomment>page title of device discovery page</extracomment>
+        <translation>Connect your Mooshimeter</translation>
+    </message>
+    <message id="discovery-no-devices">
+        <source>No Mooshimeters found</source>
+        <extracomment>placeholder text on discovery page, if devices list is empty</extracomment>
+        <translation>No Mooshimeters found</translation>
+    </message>
+    <message id="button-scan">
+        <source>Scan for Mooshimeter</source>
+        <extracomment>scan button in setting page</extracomment>
+        <translation>Scan for Mooshimeter</translation>
+    </message>
 </context>
 </TS>

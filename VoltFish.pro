@@ -45,7 +45,8 @@ DISTFILES += \
     qml/pages/Graph.qml \
     qml/VoltFish.qml \
     qml/pages/settings.qml \
-    qml/pages/about.qml
+    qml/pages/about.qml \
+    qml/pages/discovery.qml
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 

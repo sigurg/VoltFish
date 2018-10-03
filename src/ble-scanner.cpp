@@ -41,8 +41,10 @@ void BLEScanner::addDevice(const QBluetoothDeviceInfo &info) {
 
     if (info.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration) 	// is BLE device
         if (info.majorDeviceClass() == QBluetoothDeviceInfo::MiscellaneousDevice)		// misc device
-            if (info.serviceUuids().contains(METER_SERVICE)) 							// has meter service UUID
+            if (info.serviceUuids().contains(METER_SERVICE)) {							// has meter service UUID
                 mooshimeters.append(new BLEDevice(info));
+                emit devicesUpdated();
+            }
 }
 
 
