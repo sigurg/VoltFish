@@ -9,6 +9,7 @@ Page {
 
     Column {
         anchors.fill: parent
+        spacing: Theme.paddingLarge
 
         PageHeader {
             //% "Setting"
@@ -16,37 +17,42 @@ Page {
             title: qsTrId("settings")
         }
 
-        Label {
-            //% "Note:\nrequires Mooshimeter firmware 147xxx"
-            text: qsTrId("firmware-note")
+        Column {
+            spacing: Theme.paddingSmall
             width: parent.width
-            wrapMode: TextInput.WordWrap
-            padding: Theme.paddingMedium
-        }
 
-        TextField {
-            id: bt
-            focus: true
-            //% "Bluetooth Address"
-            label: qsTrId("bluetooth-address")
-            placeholderText: label
-            text: mooshimeter.btaddr
-            width: parent.width
-            EnterKey.enabled: text.length == 17
-            EnterKey.onClicked: mooshimeter.btaddr = text
-            EnterKey.iconSource: "image://theme/icon-m-enter-accept"
-        }
+            Label {
+                //% "Note:\nrequires Mooshimeter firmware 147xxx"
+                text: qsTrId("firmware-note")
+                width: parent.width
+                wrapMode: TextInput.WordWrap
+                padding: Theme.paddingMedium
+            }
 
-        Button {
-            //% "Scan for Mooshimeter"
-            //: scan button in setting page
-            text: qsTrId("button-scan")
-            anchors.horizontalCenter: parent.horizontalCenter
-            onClicked: {
-                var dialog = pageStack.push("discovery.qml")
-                dialog.accepted.connect(function() {
-                    mooshimeter.btaddr = dialog.btaddr
-                })
+            TextField {
+                id: bt
+                focus: true
+                //% "Bluetooth Address"
+                label: qsTrId("bluetooth-address")
+                placeholderText: label
+                text: mooshimeter.btaddr
+                width: parent.width
+                EnterKey.enabled: text.length == 17
+                EnterKey.onClicked: mooshimeter.btaddr = text
+                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+            }
+
+            Button {
+                //% "Scan for Mooshimeter"
+                //: scan button in setting page
+                text: qsTrId("button-scan")
+                anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: {
+                    var dialog = pageStack.push("discovery.qml")
+                    dialog.accepted.connect(function() {
+                        mooshimeter.btaddr = dialog.btaddr
+                    })
+                }
             }
         }
 
