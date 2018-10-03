@@ -47,6 +47,7 @@ Page {
 
             delegate: BackgroundItem {
                 id: backgroundItem
+                width: parent.width
                 height: Theme.fontSizeExtraLarge * 2
 
                 ListView.onAdd: AddAnimation {
