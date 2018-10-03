@@ -47,12 +47,7 @@ Page {
                 //: scan button in setting page
                 text: qsTrId("button-scan")
                 anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: {
-                    var dialog = pageStack.push("discovery.qml")
-                    dialog.accepted.connect(function() {
-                        mooshimeter.btaddr = dialog.btaddr
-                    })
-                }
+                onClicked: pageStack.push("discovery.qml")
             }
         }
 
