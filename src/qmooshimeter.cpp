@@ -453,10 +453,10 @@ void QMooshimeter::set_btaddr(const QString &addr) {
 
     btaddr = addr;
     emit btaddrChanged();
-    settings.setValue("btaddr", btaddr);
-    settings.sync();
     mm.reset();
     connect();
+    settings.setValue("btaddr", btaddr);
+    settings.sync();
 }
 
 
