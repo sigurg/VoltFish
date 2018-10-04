@@ -1,3 +1,8 @@
+* Fri Oct 04 2018 sigurg <sigurg@users.noreply.github.com> 0.2.1-1
+- added license & copyright notice
+- comsmetic fixes for discovery page
+- spanish translation updated
+
 * Wed Oct 03 2018 sigurg <sigurg@users.noreply.github.com> 0.2-1
 - added scanning for BLE devices
 - added note that 147xxx firmware is required
