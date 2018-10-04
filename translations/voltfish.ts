@@ -176,5 +176,10 @@ requires Mooshimeter firmware 147xxx</translation>
         <extracomment>scan button in setting page</extracomment>
         <translation>Scan for Mooshimeter</translation>
     </message>
+    <message id="copyright">
+        <source>This application is open source software under the terms of &amp;lt;a href=&amp;quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&amp;quot;&amp;gt;GNU GPLv2&amp;lt;/a&amp;gt;</source>
+        <extracomment>copyright notice on about page</extracomment>
+        <translation>This application is open source software under the terms of &lt;a href=&quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&quot;&gt;GNU GPLv2&lt;/a&gt;</translation>
+    </message>
 </context>
 </TS>

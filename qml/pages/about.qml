@@ -42,6 +42,22 @@ Page {
             textFormat: Text.RichText
             horizontalAlignment: Text.AlignHCenter
             onLinkActivated : Qt.openUrlExternally(link)
+            linkColor: Theme.highlightColor
+        }
+
+        Text {
+            id: copyright
+            //% "This application is open source software under the terms of &lt;a href=&quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&quot;&gt;GNU GPLv2&lt;/a&gt;"
+            //: copyright notice on about page
+            text: qsTrId("copyright")
+            width: parent.width
+            color: Theme.secondaryColor
+            font.pixelSize: Theme.fontSizeMedium
+            wrapMode: Text.WordWrap
+            textFormat: Text.RichText
+            horizontalAlignment: Text.AlignHCenter
+            onLinkActivated : Qt.openUrlExternally(link)
+            linkColor: Theme.highlightColor
         }
 
         Button {
@@ -57,6 +73,5 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: Qt.openUrlExternally("https://github.com/sigurg/VoltFish")
         }
-
     }
 }

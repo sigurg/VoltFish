@@ -176,5 +176,10 @@ Mooshimeter requiere de controlador_lógico 147xxx</translation>
         <extracomment>scan button in setting page</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message id="copyright">
+        <source>This application is open source software under the terms of &amp;lt;a href=&amp;quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&amp;quot;&amp;gt;GNU GPLv2&amp;lt;/a&amp;gt;</source>
+        <extracomment>copyright notice on about page</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
