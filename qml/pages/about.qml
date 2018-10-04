@@ -20,7 +20,7 @@ Page {
 
         Image {
             id: icon
-            source: "/usr/share/icons/hicolor/128x128/apps/VoltFish.png"
+            source: "/usr/share/icons/hicolor/128x128/apps/voltfish.png"
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
