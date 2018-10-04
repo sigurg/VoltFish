@@ -19,7 +19,7 @@ Group:      Applications/Engineering
 License:    LICENSE
 URL:        https://github.com/sigurg/VoltFish
 Source0:    %{name}-%{version}.tar.bz2
-Source100:  VoltFish.yaml
+Source100:  voltfish.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
