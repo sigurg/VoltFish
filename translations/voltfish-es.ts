@@ -21,7 +21,7 @@
     <message id="mode-current-dc">
         <source>Current D/C</source>
         <extracomment>measurement mode: electrical current (D/C)</extracomment>
-        <translation>C/D actual</translation>
+        <translation>Actual C/D</translation>
     </message>
     <message id="mode-temperature">
         <source>Temperature</source>
@@ -80,8 +80,8 @@
     </message>
     <message id="firmware-note">
         <source>Note:\nrequires Mooshimeter firmware 147xxx</source>
-        <translation>nota:
-Mooshimeter requiere de controlador_lógico 147xxx</translation>
+        <translation>Nota:
+Mooshimeter requiere del controlador_lógico 147xxx</translation>
     </message>
     <message id="bluetooth-address">
         <source>Bluetooth Address</source>
@@ -155,7 +155,7 @@ Mooshimeter requiere de controlador_lógico 147xxx</translation>
     </message>
     <message id="button-report-issue">
         <source>Report Issue</source>
-        <translation>Bichos</translation>
+        <translation>Bicho</translation>
     </message>
     <message id="button-github-page">
         <source>View source on Github</source>
@@ -164,22 +164,22 @@ Mooshimeter requiere de controlador_lógico 147xxx</translation>
     <message id="discovery-title">
         <source>Connect your Mooshimeter</source>
         <extracomment>page title of device discovery page</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Conectar el Mooshimeter</translation>
     </message>
     <message id="discovery-no-devices">
         <source>No Mooshimeters found</source>
         <extracomment>placeholder text on discovery page, if devices list is empty</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>No se hallaron Mooshimeters</translation>
     </message>
     <message id="button-scan">
         <source>Scan for Mooshimeter</source>
         <extracomment>scan button in setting page</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Buscar Mooshimeter</translation>
     </message>
     <message id="copyright">
         <source>This application is open source software under the terms of &amp;lt;a href=&amp;quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&amp;quot;&amp;gt;GNU GPLv2&amp;lt;/a&amp;gt;</source>
         <extracomment>copyright notice on about page</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>voltfish es un programa libre bajo los términos de &amp;lt;a href=&amp;quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&amp;quot;&amp;gt;GNU GPLv2&amp;lt;/a&amp;gt;</translation>
     </message>
 </context>
 </TS>
