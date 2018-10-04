@@ -179,7 +179,7 @@ Mooshimeter requiere del controlador_lógico 147xxx</translation>
     <message id="copyright">
         <source>This application is open source software under the terms of &amp;lt;a href=&amp;quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&amp;quot;&amp;gt;GNU GPLv2&amp;lt;/a&amp;gt;</source>
         <extracomment>copyright notice on about page</extracomment>
-        <translation>voltfish es un programa libre bajo los términos de &amp;lt;a href=&amp;quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&amp;quot;&amp;gt;GNU GPLv2&amp;lt;/a&amp;gt;</translation>
+        <translation>voltfish es un programa libre bajo los términos de &lt;a href=&quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&quot;&gt;GNU GPLv2&lt;/a&gt;</translation>
     </message>
 </context>
 </TS>
