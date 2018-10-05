@@ -225,7 +225,7 @@ QString QMooshimeter::get_math() {
             if (ch1_analysis != Analysis::RMS || ch2_analysis != Analysis::RMS)
                 return invalid;
             val = pwr / (ch1_value * ch2_value);
-            unit = "";
+            return QString::number(val);
             break;
 
         case MathMode::THERMOCOUPLE_K:
