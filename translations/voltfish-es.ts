@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="es_GT">
 <context>
     <name></name>
     <message id="mode-voltage-ac">
@@ -159,17 +159,17 @@ Mooshimeter requiere del controlador_lógico 147xxx</translation>
     </message>
     <message id="button-github-page">
         <source>View source on Github</source>
-        <translation>Github</translation>
+        <translation>Fuente</translation>
     </message>
     <message id="discovery-title">
         <source>Connect your Mooshimeter</source>
         <extracomment>page title of device discovery page</extracomment>
-        <translation>Conectar el Mooshimeter</translation>
+        <translation>Dispositivos</translation>
     </message>
     <message id="discovery-no-devices">
         <source>No Mooshimeters found</source>
         <extracomment>placeholder text on discovery page, if devices list is empty</extracomment>
-        <translation>No se hallaron Mooshimeters</translation>
+        <translation>No hay Mooshimeter, ir ah ajustes y conectar uno</translation>
     </message>
     <message id="button-scan">
         <source>Scan for Mooshimeter</source>
