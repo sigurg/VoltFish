@@ -85,7 +85,7 @@ Page {
                     x: Theme.horizontalPageMargin
                     text: mooshimeter.ch1
                     color: Theme.primaryColor
-                    font.pixelSize: 100
+                    font.pixelSize: Theme.fontSizeHuge * 1.5
                     font.bold: true
                     anchors.right: parent.right
                 }
@@ -157,7 +157,7 @@ Page {
                     x: Theme.horizontalPageMargin
                     text: mooshimeter.ch2
                     color: Theme.primaryColor
-                    font.pixelSize: 100
+                    font.pixelSize: Theme.fontSizeHuge * 1.5
                     font.bold: true
                     anchors.right: parent.right
                 }
@@ -221,7 +221,7 @@ Page {
                     x: Theme.horizontalPageMargin
                     text: qsTrId(mooshimeter.math)
                     color: Theme.primaryColor
-                    font.pixelSize: 70
+                    font.pixelSize: Theme.fontSizeHuge
                     font.bold: true
                     anchors.right: parent.right
                 }
