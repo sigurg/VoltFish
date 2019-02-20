@@ -1,10 +1,6 @@
 # VoltFish
 [SailfishOS](https://sailfishos.org/) app for the [Mooshimeter](https://moosh.im/mooshimeter/) BluetoothLE Multimeter based on [pk8's mooshimeter lib](https://github.com/pk8/mooshimeter-lib).
 
-This app is in early alpha stage, and has only been tested in my phone (Aquafish) with my meter, so expect plenty of bugs :)
-
-**To use the app, you must enter the Bluetooth ID of your Mooshimeter in the app's settings dialog. Currently only 147xxx series firmware is supported, 152xxx does not work.**
-
 
 ## What works:
 * scan for and connect to Mooshimeter
