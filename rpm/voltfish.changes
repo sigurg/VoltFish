@@ -1,3 +1,9 @@
+* Wed Feb 20 2019 sigurg <sigurg@users.noreply.github.com> 0.3.0-1
+- compability fix for 152xxx Mooshimeter firmware
+- better font size scaling
+- don't use SI prefix for power factor
+- spanish translation updated
+
 * Fri Oct 04 2018 sigurg <sigurg@users.noreply.github.com> 0.2.1-1
 - added license & copyright notice
 - cosmetic fixes for discovery page
