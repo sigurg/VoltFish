@@ -13,7 +13,7 @@ Name:       voltfish
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    inofficial app for the Mooshimeter BluetoothLE multimeter
-Version:    0.2.1
+Version:    0.3.0
 Release:    1
 Group:      Applications/Engineering
 License:    LICENSE

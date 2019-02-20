@@ -3,7 +3,7 @@
 #include "ble-scanner.h"
 #include "qmooshimeter.h"
 
-#define APP_VERSION "0.2.1"
+#define APP_VERSION "0.3.0"
 
 int main(int argc, char *argv[])
 {
