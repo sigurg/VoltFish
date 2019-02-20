@@ -10,8 +10,15 @@ Mooshimeter::Mooshimeter(const char* _hwaddr, uint16_t _hin, uint16_t _hout,
    wr(ble, config, expected),
    rd(ble, config, expected, _measurement, _others)
 {
+  // dirty hack to fix 152xxx firmware bug: meter sends CRC32 value as unsigned,
+  // but expects signed value in response
+  auto crc = wr.cmd("ADMIN:CRC32").get();
+  int32_t i =  int32_t(std::stoul(crc.c_str()));
+
   // Switch into full operational mode.
-  wr.cmd("ADMIN:CRC32 "+wr.cmd("ADMIN:CRC32").get());
+  // FIXME: actually do a CRC check here...
+  wr.cmd("ADMIN:CRC32 "+std::to_string(i));
+
   // Update config tree data.
   config.rebuild(wr.cmd("ADMIN:TREE").get());
 
