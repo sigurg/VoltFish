@@ -5,8 +5,7 @@
 
 #define APP_VERSION "0.3.0"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QGuiApplication *app = SailfishApp::application(argc, argv);
     QQuickView *view = SailfishApp::createView();
     QQmlContext *ctx = view->rootContext();

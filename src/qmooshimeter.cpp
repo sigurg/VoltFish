@@ -14,7 +14,8 @@ uint qHash(const QMooshimeter::Mapping &m, uint seed = 0) {
     return qHash(uint(m), seed);
 }
 
-const QHash<QMooshimeter::Mapping, QStringList> QMooshimeter::valid_ranges{ // strings, as sent to meter
+const QHash<QMooshimeter::Mapping, QStringList>
+QMooshimeter::valid_ranges{ // strings, as sent to meter
     {Mapping::VOLTAGE,		{"60", "600"}},
     {Mapping::CURRENT,		{"10"}},
     {Mapping::TEMP, 		{"350"}},
@@ -48,7 +49,7 @@ const QStringList QMooshimeter::valid_rates{"125", "250", "500", "1000", "2000",
 const QStringList QMooshimeter::valid_buffer_depths{"32", "64", "128", "256"};
 constexpr std::array<double, 10> QMooshimeter::thermocouple_coeff;
 
-QDebug& operator<<(QDebug stream, const std::string &s) {
+QDebug &operator<<(QDebug stream, const std::string &s) {
     return stream << s.c_str();
 }
 
@@ -69,10 +70,10 @@ QMooshimeter::QMooshimeter(QObject *parent) :
     ch2_mapping(Mapping::VOLTAGE),
     ch2_analysis(Analysis::MEAN),
     ch2_range(1),
-    math_mode(MathMode::REAL_PWR)
-{
+    math_mode(MathMode::REAL_PWR) {
     btaddr = settings.value("btaddr", "").toString();
-    temp_unit = TempUnit(settings.value("tempunit", int(TempUnit::KELVIN)).toInt());
+    temp_unit = TempUnit(settings.value("tempunit",
+                                        int(TempUnit::KELVIN)).toInt());
 
     model_ch1_range = range_model(ch1_mapping);
     model_ch2_range = range_model(ch2_mapping);
@@ -92,18 +93,18 @@ QMooshimeter::~QMooshimeter() {
 
 void QMooshimeter::connect() {
     mm = std::make_shared<Mooshimeter>(
-                btaddr.toLatin1().data(),
-                H_IN,
-                H_OUT,
-                std::bind(&QMooshimeter::measurement_cb, this, _1),
-                std::bind(&QMooshimeter::others_cb, this, _1),
-				// use verbose mode for debug builds
+             btaddr.toLatin1().data(),
+             H_IN,
+             H_OUT,
+             std::bind(&QMooshimeter::measurement_cb, this, _1),
+             std::bind(&QMooshimeter::others_cb, this, _1),
+             // use verbose mode for debug builds
 #ifdef QT_NO_DEBUG_OUTPUT
-                false
+             false
 #else
-                true
+             true
 #endif
-                );
+         );
 
     set_ch1();
     set_ch2();
@@ -162,7 +163,8 @@ void QMooshimeter::others_cb(const Response &r) {
 
 
 
-static inline QString outOfRange() { // workaround for lupdate to work correctly
+static inline QString
+outOfRange() { // workaround for lupdate to work correctly
     //% "out of range"
     //: displayed in measurement label when value is out of range
     return qtTrId("out-of-range");
@@ -171,8 +173,9 @@ static inline QString outOfRange() { // workaround for lupdate to work correctly
 
 
 QString QMooshimeter::get_ch1() {
-    if (is_out_of_range(ch1_mapping, ch1_range, ch1_value))
+    if (is_out_of_range(ch1_mapping, ch1_range, ch1_value)) {
         return outOfRange();
+    }
 
     return format(ch1_mapping, ch1_value);
 }
@@ -180,8 +183,9 @@ QString QMooshimeter::get_ch1() {
 
 
 QString QMooshimeter::get_ch2() {
-    if (is_out_of_range(ch2_mapping, ch2_range, ch2_value))
+    if (is_out_of_range(ch2_mapping, ch2_range, ch2_value)) {
         return outOfRange();
+    }
 
     return format(ch2_mapping, ch2_value);
 }
@@ -190,8 +194,9 @@ QString QMooshimeter::get_ch2() {
 
 double QMooshimeter::thermocouple_convert(const double &v) {
     double t{0}, uv{v * 1e6};
-    for (size_t i=0; i<thermocouple_coeff.size(); ++i)
+    for (size_t i=0; i<thermocouple_coeff.size(); ++i) {
         t += thermocouple_coeff.at(i)*std::pow(uv, i);
+    }
     return t;
 }
 
@@ -205,39 +210,48 @@ QString QMooshimeter::get_math() {
     static const auto invalid = qtTrId("invalid-inputs");
 
     switch (math_mode) {
-        case MathMode::REAL_PWR:
-            if (ch1_mapping != Mapping::CURRENT || (ch2_mapping != Mapping::VOLTAGE && ch2_mapping != Mapping::AUX_V))
-                return invalid;
-            val = pwr;
-            unit = "W";
-            break;
+    case MathMode::REAL_PWR:
+        if (ch1_mapping != Mapping::CURRENT || (ch2_mapping != Mapping::VOLTAGE
+                                                && ch2_mapping != Mapping::AUX_V)) {
+            return invalid;
+        }
+        val = pwr;
+        unit = "W";
+        break;
 
-        case MathMode::APP_PWR:
-            if (ch1_mapping != Mapping::CURRENT || (ch2_mapping != Mapping::VOLTAGE && ch2_mapping != Mapping::AUX_V))
-                return invalid;
-            val = ch1_value * ch2_value;
-            unit = "VA";
-            break;
+    case MathMode::APP_PWR:
+        if (ch1_mapping != Mapping::CURRENT || (ch2_mapping != Mapping::VOLTAGE
+                                                && ch2_mapping != Mapping::AUX_V)) {
+            return invalid;
+        }
+        val = ch1_value * ch2_value;
+        unit = "VA";
+        break;
 
-        case MathMode::PWR_FACTOR:
-            if (ch1_mapping != Mapping::CURRENT || (ch2_mapping != Mapping::VOLTAGE && ch2_mapping != Mapping::AUX_V))
-                return invalid;
-            if (ch1_analysis != Analysis::RMS || ch2_analysis != Analysis::RMS)
-                return invalid;
-            val = pwr / (ch1_value * ch2_value);
-            return QString::number(val);
-            break;
+    case MathMode::PWR_FACTOR:
+        if (ch1_mapping != Mapping::CURRENT || (ch2_mapping != Mapping::VOLTAGE
+                                                && ch2_mapping != Mapping::AUX_V)) {
+            return invalid;
+        }
+        if (ch1_analysis != Analysis::RMS || ch2_analysis != Analysis::RMS) {
+            return invalid;
+        }
+        val = pwr / (ch1_value * ch2_value);
+        return QString::number(val);
+        break;
 
-        case MathMode::THERMOCOUPLE_K:
-            if (ch1_mapping != Mapping::TEMP && ch2_mapping != Mapping::TEMP)
-                return invalid;
-            if (ch1_mapping != Mapping::AUX_V && ch2_mapping != Mapping::AUX_V)
-                return invalid;
-            double v = (ch1_mapping == Mapping::AUX_V) ? ch1_value : ch2_value;
-            double t = (ch1_mapping == Mapping::TEMP) ? ch1_value : ch2_value;
-            t += thermocouple_convert(v);
-            return format_temp(t);
-            break;
+    case MathMode::THERMOCOUPLE_K:
+        if (ch1_mapping != Mapping::TEMP && ch2_mapping != Mapping::TEMP) {
+            return invalid;
+        }
+        if (ch1_mapping != Mapping::AUX_V && ch2_mapping != Mapping::AUX_V) {
+            return invalid;
+        }
+        double v = (ch1_mapping == Mapping::AUX_V) ? ch1_value : ch2_value;
+        double t = (ch1_mapping == Mapping::TEMP) ? ch1_value : ch2_value;
+        t += thermocouple_convert(v);
+        return format_temp(t);
+        break;
     }
     return si_prefix(val) + unit;
 }
@@ -324,12 +338,12 @@ void QMooshimeter::set_depth(QString d) {
 
 bool QMooshimeter::is_shared(const Mapping &mapping) {
     switch (mapping) {
-        case Mapping::VOLTAGE:
-        case Mapping::CURRENT:
-        case Mapping::TEMP:
-            return false;
-        default:
-            return true;
+    case Mapping::VOLTAGE:
+    case Mapping::CURRENT:
+    case Mapping::TEMP:
+        return false;
+    default:
+        return true;
     }
 }
 
@@ -354,33 +368,34 @@ bool QMooshimeter::check_range(const Mapping &mapping, int &range) {
 
 
 bool QMooshimeter::check_mapping(const int &channel, Mapping &mapping) {
-    switch(channel) {
-        case 1:
-            if (mapping == Mapping::VOLTAGE) {
-                mapping = Mapping::CURRENT;
-                return false;
-            } else {
-                return true;
-            }
-            break;
-        case 2:
-            if (mapping == Mapping::CURRENT ) {
-                mapping = Mapping::VOLTAGE;
-                return false;
-            } else {
-                return true;
-            }
-            break;
-        default:
-            throw std::runtime_error("Invalid channel: " + channel);
+    switch (channel) {
+    case 1:
+        if (mapping == Mapping::VOLTAGE) {
+            mapping = Mapping::CURRENT;
+            return false;
+        } else {
+            return true;
+        }
+        break;
+    case 2:
+        if (mapping == Mapping::CURRENT) {
+            mapping = Mapping::VOLTAGE;
+            return false;
+        } else {
+            return true;
+        }
+        break;
+    default:
+        throw std::runtime_error("Invalid channel: " + channel);
     }
     return false;
 }
 
 
 bool QMooshimeter::check_rate(QString &rate) {
-    if (valid_rates.contains(rate))
+    if (valid_rates.contains(rate)) {
         return true;
+    }
 
     rate = valid_rates.last();
     return false;
@@ -389,8 +404,9 @@ bool QMooshimeter::check_rate(QString &rate) {
 
 
 bool QMooshimeter::check_depth(QString &depth) {
-    if (valid_buffer_depths.contains(depth))
+    if (valid_buffer_depths.contains(depth)) {
         return true;
+    }
 
     depth = valid_buffer_depths.last();
     return false;
@@ -398,7 +414,8 @@ bool QMooshimeter::check_depth(QString &depth) {
 
 
 
-void QMooshimeter::channel_config(const int &channel, Mapping &mapping, Analysis &analysis, int &range) {
+void QMooshimeter::channel_config(const int &channel, Mapping &mapping,
+                                  Analysis &analysis, int &range) {
     Q_ASSERT(channel > 0 && channel < 3);
     check_mapping(channel, mapping);
     check_range(mapping, range);
@@ -422,10 +439,11 @@ void QMooshimeter::channel_config(const int &channel, Mapping &mapping, Analysis
     cmd(ch + ":RANGE_I " + l.at(range));
     cmd(ch + ":ANALYSIS " + an);
 
-    if (channel == 1)
+    if (channel == 1) {
         model_ch1_range = range_model(mapping);
-    else
+    } else {
         model_ch2_range = range_model(mapping);
+    }
 
     emit ch1Config();
     emit ch1modelChanged();
@@ -448,8 +466,9 @@ void QMooshimeter::set_ch2() {
 
 
 void QMooshimeter::set_btaddr(const QString &addr) {
-    if ((btaddr == addr) || addr.isEmpty())
+    if ((btaddr == addr) || addr.isEmpty()) {
         return;
+    }
 
     btaddr = addr;
     emit btaddrChanged();
@@ -473,23 +492,23 @@ void QMooshimeter::set_temp_unit(const TempUnit &t) {
 QString QMooshimeter::format(const Mapping &mapping, const double &val) {
     QString unit;
     switch (mapping) {
-        case Mapping::VOLTAGE:
-        case Mapping::AUX_V:
-        case Mapping::DIODE:
-            unit = "V";
-            break;
+    case Mapping::VOLTAGE:
+    case Mapping::AUX_V:
+    case Mapping::DIODE:
+        unit = "V";
+        break;
 
-        case Mapping::CURRENT:
-            unit = "A";
-            break;
+    case Mapping::CURRENT:
+        unit = "A";
+        break;
 
-        case Mapping::TEMP:
-            return format_temp(val);
-            break;
+    case Mapping::TEMP:
+        return format_temp(val);
+        break;
 
-        case Mapping::RESISTANCE:
-            unit = QChar(0x03A9); // omega
-            break;
+    case Mapping::RESISTANCE:
+        unit = QChar(0x03A9); // omega
+        break;
     }
 
     return si_prefix(val) + unit;
@@ -497,7 +516,8 @@ QString QMooshimeter::format(const Mapping &mapping, const double &val) {
 
 
 
-bool QMooshimeter::is_out_of_range(const Mapping &mapping, const int &range, const double &val) {
+bool QMooshimeter::is_out_of_range(const Mapping &mapping, const int &range,
+                                   const double &val) {
     return out_of_range.value(mapping).at(range) < std::abs(val);
 }
 
@@ -506,17 +526,17 @@ bool QMooshimeter::is_out_of_range(const Mapping &mapping, const int &range, con
 QString QMooshimeter::format_temp(double val) {
     QString unit;
     switch (temp_unit) {
-        case TempUnit::KELVIN:
-            unit = "°K";
-            break;
-        case TempUnit::CELSIUS:
-            unit = "°C";
-            val -= 273.15;
-            break;
-        case TempUnit::FAHRENHEIT:
-            unit = "°F";
-            val = val * 9.0/5.0 - 459.67;
-            break;
+    case TempUnit::KELVIN:
+        unit = "°K";
+        break;
+    case TempUnit::CELSIUS:
+        unit = "°C";
+        val -= 273.15;
+        break;
+    case TempUnit::FAHRENHEIT:
+        unit = "°F";
+        val = val * 9.0/5.0 - 459.67;
+        break;
     }
 
     return QString::number(val) + " " + unit; // no SI prefix for temperatures
@@ -528,17 +548,19 @@ QString QMooshimeter::si_prefix(const double &val) {
     static const QList<QChar> iPref{ 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y' };
     static const QList<QChar> dPref{ 'm', 0x03bc, 'n', 'p', 'f', 'a', 'z', 'y' };
 
-    if (val == 0)
+    if (val == 0) {
         return QString::number(val) + " ";
+    }
 
     int deg = std::floor(std::log10(std::abs(val)) / 3);
     deg = qBound(-dPref.length(), deg, iPref.length());
     double sc = val * std::pow(1000, -deg);
 
-    if (deg > 0)
+    if (deg > 0) {
         return QString::number(sc) + " " + iPref.at(deg-1);
-    else if (deg < 0)
+    } else if (deg < 0) {
         return QString::number(sc) + " " + dPref.at(-deg-1);
+    }
 
     return QString::number(val) + " ";
 }

@@ -43,13 +43,15 @@ public:
     ~BLEScanner();
     QVariant getDevices();
     QString getUpdate();
-    bool getScanning() {return scanning;};
+    bool getScanning() {
+        return scanning;
+    };
 
 public slots:
     void startDeviceDiscovery();
 
 private slots:
-    void addDevice(const QBluetoothDeviceInfo&);
+    void addDevice(const QBluetoothDeviceInfo &);
     void scanFinished();
     void scanError(QBluetoothDeviceDiscoveryAgent::Error);
 
@@ -60,7 +62,7 @@ Q_SIGNALS:
 
 private:
     QBluetoothDeviceDiscoveryAgent *discoveryAgent;
-    QList<QObject*> mooshimeters;
+    QList<QObject *> mooshimeters;
     bool scanning;
 
 };
