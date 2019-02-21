@@ -1,4 +1,5 @@
 #include "mooshimeter.h"
+#include <zlib.h>
 #include <iostream>
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -10,17 +11,26 @@ Mooshimeter::Mooshimeter(const char* _hwaddr, uint16_t _hin, uint16_t _hout,
    wr(ble, config, expected),
    rd(ble, config, expected, _measurement, _others)
 {
-  // dirty hack to fix 152xxx firmware bug: meter sends CRC32 value as unsigned,
-  // but expects signed value in response
-  auto crc = wr.cmd("ADMIN:CRC32").get();
-  int32_t i =  int32_t(std::stoul(crc.c_str()));
+  // get CRC of config tree
+  auto expected_crc = std::stoul(wr.cmd("ADMIN:CRC32").get());
 
-  // Switch into full operational mode.
-  // FIXME: actually do a CRC check here...
-  wr.cmd("ADMIN:CRC32 "+std::to_string(i));
+  // get config tree
+  auto ctree = wr.cmd("ADMIN:TREE").get();
+
+  // calc CRC32
+  auto crc = crc32(0L, Z_NULL, 0);
+  crc = crc32(crc, reinterpret_cast<const Bytef*>(ctree.c_str()), ctree.length());
+
+  if (expected_crc != crc)
+    throw std::runtime_error("Mooshimeter: config tree corrupt, CRC32 mismatch");
 
   // Update config tree data.
-  config.rebuild(wr.cmd("ADMIN:TREE").get());
+  config.rebuild(ctree);
+
+  // Switch into full operational mode.
+  // dirty hack to fix 152xxx firmware bug: CRC32 value needs to be
+  // sent as signed int
+  wr.cmd("ADMIN:CRC32 "+std::to_string(int32_t(crc)));
 
 #ifndef QT_NO_DEBUG_OUTPUT
   std::cerr << std::endl << "*** Config Tree: " << std::endl;
