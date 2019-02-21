@@ -1,3 +1,4 @@
 *.pro.user*
 rpm/*.spec.*
 *.swp
+.qmake.stash
