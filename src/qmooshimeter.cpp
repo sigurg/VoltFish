@@ -116,7 +116,8 @@ void QMooshimeter::connect() {
 
     ch1_mapping = Mapping(metaMapping.keyToValue(m.c_str()));
     ch1_analysis = Analysis(metaAnalysis.keyToValue(cmd("CH1:ANALYSIS").get().c_str()));
-    ch1_range = valid_ranges[ch1_mapping].size()-1;
+    model_ch1_range = range_model(ch1_mapping);
+    ch1_range = model_ch1_range.size()-1;
 
     //auto r = cmd("CH1:RANGE_I").get().c_str();
     //ch1_range = valid_ranges[ch1_mapping].indexOf(r);
@@ -130,7 +131,8 @@ void QMooshimeter::connect() {
 
     ch2_mapping = Mapping(metaMapping.keyToValue(m.c_str()));
     ch2_analysis = Analysis(metaAnalysis.keyToValue(cmd("CH2:ANALYSIS").get().c_str()));
-    ch2_range = valid_ranges[ch2_mapping].size()-1;
+    model_ch2_range = range_model(ch2_mapping);
+    ch2_range = model_ch2_range.size()-1;
 
     emit ch2modelChanged();
     emit ch2Config();
