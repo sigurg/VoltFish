@@ -31,7 +31,7 @@ private:
 public:
     Writer(BLE &_ble, ConfigTree &_config, ExpectedResponses &_expected);
     ~Writer();
-    std::future<std::string> cmd(std::string cmd);
+    std::shared_future<std::string> cmd(std::string cmd);
 };
 
 #endif // __WRITER_H

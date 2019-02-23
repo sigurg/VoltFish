@@ -69,7 +69,7 @@ void Writer::writer_thread() {
     }
 }
 //---------------------------------------------------------------------------
-std::future<std::string> Writer::cmd(std::string cmd) {
+std::shared_future<std::string> Writer::cmd(std::string cmd) {
     std::string buf;
     std::string::size_type idx = cmd.find(' ');
     std::string arg;
@@ -151,7 +151,7 @@ std::future<std::string> Writer::cmd(std::string cmd) {
         }
     }
     std::promise<std::string> p;
-    std::future<std::string> f = p.get_future();
+    std::shared_future<std::string> f = p.get_future();
     q.push({ cmd, buf, std::move(p) });
     return f;
 }

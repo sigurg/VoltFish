@@ -69,7 +69,7 @@ public:
     ~Mooshimeter();
     // Sends command cmd to the mooshimeter. Returns future object which allows
     // to obtain result. Function is non-blocking and thread safe.
-    std::future<std::string> cmd(std::string cmd) {
+    std::shared_future<std::string> cmd(std::string cmd) {
         return wr.cmd(cmd);
     }
     // Returns configuration tree data in read-only mode.

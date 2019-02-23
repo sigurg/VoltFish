@@ -108,9 +108,11 @@ void QMooshimeter::connect() {
 
     set_ch1();
     set_ch2();
-    set_rate("1000");
-    set_depth("128");
+    rate = cmd("SAMPLING:RATE").get().c_str();
+    depth = cmd("SAMPLING:DEPTH").get().c_str();
     cmd("SAMPLING:TRIGGER CONTINUOUS");
+    emit rateChanged();
+    emit depthChanged();
 }
 
 
@@ -577,7 +579,7 @@ QStringList QMooshimeter::range_model(const Mapping &mapping) {
 
 
 
-std::future<std::string> QMooshimeter::cmd(const QString &cmd) {
+std::shared_future<std::string> QMooshimeter::cmd(const QString &cmd) {
     if (mm) {
         qDebug() << "CMD: " << cmd;
         auto ret = std::move(mm->cmd(cmd.toLatin1().data()));
@@ -586,5 +588,5 @@ std::future<std::string> QMooshimeter::cmd(const QString &cmd) {
 #endif
         return ret;
     }
-    return std::future<std::string>();
+    return std::shared_future<std::string>();
 }

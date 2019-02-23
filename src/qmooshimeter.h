@@ -94,6 +94,7 @@ public:
     Q_INVOKABLE QStringList model_depth() {
         return valid_buffer_depths;
     };
+
     Q_INVOKABLE QStringList model_math() {
         return math_modes;
     };
@@ -189,6 +190,7 @@ private:
         return log;
     };
 
+
     void set_ch1_mapping(const Mapping &m);
     void set_ch1_analysis(const Analysis &a);
     void set_ch1_range(const int &r);
@@ -229,5 +231,5 @@ private:
 
     QStringList range_model(const Mapping &mapping);
 
-    std::future<std::string> cmd(const QString &cmd);
+    std::shared_future<std::string> cmd(const QString &cmd);
 };

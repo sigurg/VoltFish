@@ -37,6 +37,8 @@ Page {
         target: mooshimeter
         onCh1Config: ch1_range.currentIndex = mooshimeter.ch1_range
         onCh2Config: ch2_range.currentIndex = mooshimeter.ch2_range
+        onRateChanged: smpl_rate.currentIndex = mooshimeter.model_rate().indexOf(mooshimeter.rate)
+        onDepthChanged: buf_depth.currentIndex = mooshimeter.model_depth().indexOf(mooshimeter.depth)
     }
 
     SilicaFlickable {
@@ -250,7 +252,6 @@ Page {
                     //% "Sample Rate"
                     //: measurement sample rate selection
                     label: qsTrId("sampling-rate")
-                    currentIndex: 3
 
                     menu: ContextMenu {
                         Repeater {
@@ -269,7 +270,6 @@ Page {
                     //% "Buffer Depth"
                     //: measurement buffer depth selection
                     label: qsTrId("buffer-depth")
-                    currentIndex: 2
 
                     menu: ContextMenu {
                         Repeater {
