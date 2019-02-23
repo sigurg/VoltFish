@@ -106,13 +106,41 @@ void QMooshimeter::connect() {
 #endif
          );
 
-    set_ch1();
-    set_ch2();
+    QMetaEnum metaMapping = QMetaEnum::fromType<Mapping>();
+    QMetaEnum metaAnalysis = QMetaEnum::fromType<Analysis>();
+
+    auto m = cmd("CH1:MAPPING").get();
+    cmd(("CH1:MAPPING " + m).c_str()).get();
+    if (m == "SHARED")
+       m = cmd("SHARED").get();
+
+    ch1_mapping = Mapping(metaMapping.keyToValue(m.c_str()));
+    ch1_analysis = Analysis(metaAnalysis.keyToValue(cmd("CH1:ANALYSIS").get().c_str()));
+    ch1_range = valid_ranges[ch1_mapping].size()-1;
+
+    //auto r = cmd("CH1:RANGE_I").get().c_str();
+    //ch1_range = valid_ranges[ch1_mapping].indexOf(r);
+
+    emit ch1modelChanged();
+    emit ch1Config();
+
+    m = cmd("CH2:MAPPING").get();
+    if (m == "SHARED")
+       m = cmd("SHARED").get();
+
+    ch2_mapping = Mapping(metaMapping.keyToValue(m.c_str()));
+    ch2_analysis = Analysis(metaAnalysis.keyToValue(cmd("CH2:ANALYSIS").get().c_str()));
+    ch2_range = valid_ranges[ch2_mapping].size()-1;
+
+    emit ch2modelChanged();
+    emit ch2Config();
+
     rate = cmd("SAMPLING:RATE").get().c_str();
     depth = cmd("SAMPLING:DEPTH").get().c_str();
-    cmd("SAMPLING:TRIGGER CONTINUOUS");
     emit rateChanged();
     emit depthChanged();
+
+    cmd("SAMPLING:TRIGGER CONTINUOUS");
 }
 
 

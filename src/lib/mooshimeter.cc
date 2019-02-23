@@ -11,10 +11,10 @@ Mooshimeter::Mooshimeter(const char *_hwaddr, uint16_t _hin, uint16_t _hout,
       wr(ble, config, expected),
       rd(ble, config, expected, _measurement, _others) {
     // get CRC of config tree
-    auto expected_crc = std::stoul(wr.cmd("ADMIN:CRC32").get());
+    const auto expected_crc = std::stoul(wr.cmd("ADMIN:CRC32").get());
 
     // get config tree
-    auto ctree = wr.cmd("ADMIN:TREE").get();
+    const auto ctree = wr.cmd("ADMIN:TREE").get();
 
     // calc CRC32
     auto crc = crc32(0L, Z_NULL, 0);

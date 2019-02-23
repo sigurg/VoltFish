@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import Sailfish.Silica 1.0
 import "../lib"
+import "../cover/util.js" as Util
 
 Page {
     id: page
@@ -35,8 +36,24 @@ Page {
 
     Connections {
         target: mooshimeter
-        onCh1Config: ch1_range.currentIndex = mooshimeter.ch1_range
-        onCh2Config: ch2_range.currentIndex = mooshimeter.ch2_range
+        onCh1Config: {
+            var mode = Util.mapping_to_str(mooshimeter.ch1_mapping, mooshimeter.ch1_analysis)
+            var model = ch1_menu.model
+
+            ch1_range.currentIndex = mooshimeter.ch1_range
+            for (var i=0; i<model.length; ++i)
+                if (model[i].label === mode)
+                    ch1_mode.currentIndex = i
+        }
+        onCh2Config: {
+            var mode = Util.mapping_to_str(mooshimeter.ch2_mapping, mooshimeter.ch2_analysis)
+            var model = ch2_menu.model
+
+            ch2_range.currentIndex = mooshimeter.ch2_range
+            for (var i=0; i<model.length; ++i)
+                if (model[i].label === mode)
+                    ch2_mode.currentIndex = i
+        }
         onRateChanged: smpl_rate.currentIndex = mooshimeter.model_rate().indexOf(mooshimeter.rate)
         onDepthChanged: buf_depth.currentIndex = mooshimeter.model_depth().indexOf(mooshimeter.depth)
     }
@@ -99,6 +116,7 @@ Page {
 
                         menu: ContextMenu {
                             Repeater {
+                                id: ch1_menu
                                 model: [
                                     //% "Current D/C"
                                     //: measurement mode: electrical current (D/C)
@@ -171,6 +189,7 @@ Page {
 
                         menu: ContextMenu {
                             Repeater {
+                                id: ch2_menu
                                 model: [
                                     //% "Voltage D/C"
                                     //: measurement mode: voltage (D/C)
