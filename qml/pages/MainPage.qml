@@ -301,6 +301,17 @@ Page {
                     }
                 }
             }
+
+            TextSwitch {
+                id: log_switch
+                //% "Logging"
+                //: log indicator switch
+                text: qsTrId("switch-logging")
+                checked: mooshimeter.log
+                automaticCheck: false
+                onClicked: mooshimeter.log = !log_switch.checked
+            }
+
         }
     }
 }

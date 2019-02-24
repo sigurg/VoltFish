@@ -78,11 +78,6 @@
         <extracomment>settings page title</extracomment>
         <translation>Ajustes</translation>
     </message>
-    <message id="firmware-note">
-        <source>Note:\nrequires Mooshimeter firmware 147xxx</source>
-        <translation>Nota:
-Mooshimeter requiere del controlador_lógico 147xxx</translation>
-    </message>
     <message id="bluetooth-address">
         <source>Bluetooth Address</source>
         <translation>Dirección Bluetooth</translation>
@@ -180,6 +175,11 @@ Mooshimeter requiere del controlador_lógico 147xxx</translation>
         <source>This application is open source software under the terms of &amp;lt;a href=&amp;quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&amp;quot;&amp;gt;GNU GPLv2&amp;lt;/a&amp;gt;</source>
         <extracomment>copyright notice on about page</extracomment>
         <translation>Esta aplicación es un programa libre bajo los términos de &lt;a href=&quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&quot;&gt;GNU GPLv2&lt;/a&gt;</translation>
+    </message>
+    <message id="switch-logging">
+        <source>Logging</source>
+        <extracomment>log indicator switch</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

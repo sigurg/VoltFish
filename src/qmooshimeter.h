@@ -57,7 +57,7 @@ public:
 
     Q_PROPERTY(float bat_v READ get_bat_v NOTIFY batChanged);
     Q_PROPERTY(int bat_percent READ get_bat_percent NOTIFY batChanged);
-    Q_PROPERTY(bool log READ get_log NOTIFY logChanged);
+    Q_PROPERTY(bool log MEMBER log WRITE log_toggle NOTIFY logChanged);
 
     Q_PROPERTY(Mapping ch1_mapping MEMBER ch1_mapping WRITE set_ch1_mapping NOTIFY
                ch1Config);
@@ -186,9 +186,11 @@ private:
     };
     int get_bat_percent();
 
-    bool get_log() {
-        return log;
-    };
+    void log_toggle(bool v) {
+        auto status = cmd((v)?"LOG:ON 1":"LOG:ON 0").get();
+        log = ("1" == status);
+        emit logChanged();
+    }
 
 
     void set_ch1_mapping(const Mapping &m);

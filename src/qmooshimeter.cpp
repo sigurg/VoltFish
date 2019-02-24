@@ -146,6 +146,9 @@ void QMooshimeter::connect() {
 
     // start sampling
     cmd("SAMPLING:TRIGGER CONTINUOUS");
+
+    log = ("1" == cmd("LOG:ON").get());
+    emit logChanged();
 }
 
 
@@ -186,11 +189,14 @@ void QMooshimeter::others_cb(const Response &r) {
             emit batChanged();
         }
     } else if (r.name == "LOG:STATUS") {
+        qDebug() << r.name << " " << r.value;
+        /*
         bool new_logging = std::stoi(r.value);
         if (new_logging != log) {
             log = new_logging;
             emit logChanged();
         }
+        */
     } else {
         qDebug() << "Unknown attribute: " << r.name << " = " << r.value;
     }
