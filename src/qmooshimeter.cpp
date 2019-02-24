@@ -109,39 +109,42 @@ void QMooshimeter::connect() {
     QMetaEnum metaMapping = QMetaEnum::fromType<Mapping>();
     QMetaEnum metaAnalysis = QMetaEnum::fromType<Analysis>();
 
-    auto m = cmd("CH1:MAPPING").get();
-    cmd(("CH1:MAPPING " + m).c_str()).get();
-    if (m == "SHARED")
-       m = cmd("SHARED").get();
+    // get all mappings (needs to be done first, for range maps to be initialized)
+    auto shmap = cmd("SHARED").get();
+    auto ch1map = cmd("CH1:MAPPING").get();
+    auto ch2map = cmd("CH2:MAPPING").get();
 
-    ch1_mapping = Mapping(metaMapping.keyToValue(m.c_str()));
+    // rewrite shared mappings
+    ch1map = (ch1map == "SHARED")?shmap:ch1map;
+    ch2map = (ch2map == "SHARED")?shmap:ch2map;
+
+    // update channel 1
+    ch1_mapping = Mapping(metaMapping.keyToValue(ch1map.c_str()));
     ch1_analysis = Analysis(metaAnalysis.keyToValue(cmd("CH1:ANALYSIS").get().c_str()));
     model_ch1_range = range_model(ch1_mapping);
-    ch1_range = model_ch1_range.size()-1;
-
-    //auto r = cmd("CH1:RANGE_I").get().c_str();
-    //ch1_range = valid_ranges[ch1_mapping].indexOf(r);
+    auto r = cmd("CH1:RANGE_I").get().c_str();
+    ch1_range = valid_ranges[ch1_mapping].indexOf(r);
 
     emit ch1modelChanged();
     emit ch1Config();
 
-    m = cmd("CH2:MAPPING").get();
-    if (m == "SHARED")
-       m = cmd("SHARED").get();
-
-    ch2_mapping = Mapping(metaMapping.keyToValue(m.c_str()));
+    // update channel 2
+    ch2_mapping = Mapping(metaMapping.keyToValue(ch2map.c_str()));
     ch2_analysis = Analysis(metaAnalysis.keyToValue(cmd("CH2:ANALYSIS").get().c_str()));
     model_ch2_range = range_model(ch2_mapping);
-    ch2_range = model_ch2_range.size()-1;
+    r = cmd("CH2:RANGE_I").get().c_str();
+    ch2_range = valid_ranges[ch2_mapping].indexOf(r);
 
     emit ch2modelChanged();
     emit ch2Config();
 
+    // update sampling rate & buffer depth
     rate = cmd("SAMPLING:RATE").get().c_str();
     depth = cmd("SAMPLING:DEPTH").get().c_str();
     emit rateChanged();
     emit depthChanged();
 
+    // start sampling
     cmd("SAMPLING:TRIGGER CONTINUOUS");
 }
 

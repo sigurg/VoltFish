@@ -1,4 +1,7 @@
 *.pro.user*
 rpm/*.spec.*
 *.swp
+*.o
 .qmake.stash
+src/lib/Makefile
+src/lib/mm-test*
