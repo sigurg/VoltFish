@@ -1,3 +1,7 @@
+* Wed Feb 20 2019 sigurg <sigurg@users.noreply.github.com> 0.3.1-1
+- load channel / sampling config from Mooshimeter instead of forcing defaults
+- added proper CRC when connecting
+
 * Wed Feb 20 2019 sigurg <sigurg@users.noreply.github.com> 0.3.0-1
 - compability fix for 152xxx Mooshimeter firmware
 - better font size scaling
