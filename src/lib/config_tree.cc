@@ -84,37 +84,26 @@ void ConfigTree::rebuild(const std::string &s) {
 }
 //---------------------------------------------------------------------------
 void ConfigTree::update_range_i(const std::string &cmd) {
-    if (cmd == "CH1:MAPPING") {
-        auto m = tree_by_name["CH1:RANGE_I"];
-        m->value.clear();
-        m->chooser_idx = 0;
-        auto &cv = m->chooser_values;
-        cv.clear();
-        m = tree_by_name["CH1:MAPPING"];
-        if (m->value == "SHARED") {
-            m = tree_by_name["SHARED"];
-        }
-        if (!m->value.empty()) {
-            for (auto &e: m->chooser_values[m->chooser_idx].subvalue) {
-                cv.push_back(e);
-            }
-        }
-    } else if (cmd == "CH2:MAPPING") {
-        auto m = tree_by_name["CH2:RANGE_I"];
-        m->value.clear();
-        m->chooser_idx = 0;
-        auto &cv = m->chooser_values;
-        cv.clear();
-        m = tree_by_name["CH2:MAPPING"];
-        if (m->value == "SHARED") {
-            m = tree_by_name["SHARED"];
-        }
-        if (!m->value.empty()) {
-            for (auto &e: m->chooser_values[m->chooser_idx].subvalue) {
-                cv.push_back(e);
-            }
-        }
-    }
+    std::string ch = "";
+    if (cmd == "CH1:MAPPING")
+        ch = "CH1";
+    else if (cmd == "CH2:MAPPING")
+        ch = "CH2";
+    else
+        return;
+
+    auto m = tree_by_name[ch+":RANGE_I"];
+    m->value.clear();
+    m->chooser_idx = 0;
+    auto &cv = m->chooser_values;
+    cv.clear();
+    m = tree_by_name[ch+":MAPPING"];
+    if (m->value == "SHARED")
+        m = tree_by_name["SHARED"];
+
+    if (!m->value.empty())
+        for (auto &e: m->chooser_values[m->chooser_idx].subvalue)
+            cv.push_back(e);
 }
 //---------------------------------------------------------------------------
 void ConfigTree::parse(std::string cmd, int chooser) {
