@@ -21,17 +21,9 @@ Page {
             spacing: Theme.paddingSmall
             width: parent.width
 
-            Label {
-                //% "Note:\nrequires Mooshimeter firmware 147xxx"
-                text: qsTrId("firmware-note")
-                width: parent.width
-                wrapMode: TextInput.WordWrap
-                padding: Theme.paddingMedium
-            }
-
             TextField {
                 id: bt
-                focus: true
+                focus: false
                 //% "Bluetooth Address"
                 label: qsTrId("bluetooth-address")
                 placeholderText: label
