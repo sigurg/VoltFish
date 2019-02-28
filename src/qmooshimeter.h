@@ -12,6 +12,18 @@
 
 #include "lib/mooshimeter.h"
 
+class LogEntry {
+public:
+    LogEntry() = default;
+    LogEntry(int i): idx(i) {}
+
+    int idx{-1};
+    size_t size{0};
+    std::time_t end_time{0};
+    std::string data;
+};
+
+
 class QMooshimeter : public QObject {
     Q_OBJECT
 public:
@@ -156,6 +168,7 @@ private:
     std::atomic<double> pwr;
     std::atomic<float>  bat_v;
     std::atomic<bool>   log;
+    std::atomic<int>    stream_idx;
 
     Mapping     ch1_mapping;
     Analysis    ch1_analysis;
@@ -174,6 +187,8 @@ private:
     QStringList model_ch2_range;
 
     TempUnit    temp_unit;
+
+    QHash<int, LogEntry> logs;
 
     void measurement_cb(const Measurement &m);
     void others_cb(const Response &r);
@@ -238,6 +253,8 @@ private:
     QString si_prefix(const double &val);
 
     QStringList range_model(const Mapping &mapping);
+
+    void stream_log(int idx);
 
     std::shared_future<std::string> cmd(const QString &cmd);
 };

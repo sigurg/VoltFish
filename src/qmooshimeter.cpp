@@ -200,23 +200,32 @@ void QMooshimeter::measurement_cb(const Measurement &m) {
 
 
 void QMooshimeter::others_cb(const Response &r) {
+    static const std::string LOGINFO{"LOG:INFO:"};
+    static const std::string LOGSTREAM{"LOG:STREAM:"};
+
     if (r.name == "BAT_V") {
+        // update battery voltage
         float new_bat_v = std::stof(r.value);
         if (new_bat_v != bat_v) {
             bat_v = new_bat_v;
             emit batChanged();
         }
-    } else if (r.name == "LOG:STATUS") {
-        qDebug() << r.name << " " << r.value;
-        /*
-        bool new_logging = std::stoi(r.value);
-        if (new_logging != log) {
-            log = new_logging;
-            emit logChanged();
+    } else if (r.name.substr(0, LOGINFO.size()) == LOGINFO) {
+        // parse log infos
+        const std::string subcmd = r.name.substr(LOGINFO.size());
+        static int last_idx{-1};
+        if (subcmd == "INDEX") {
+            last_idx = std::stoi(r.value);
+            logs[last_idx] = LogEntry(last_idx);
+        } else if (subcmd == "END_TIME") {
+            logs[last_idx].end_time = std::stol(r.value);
+        } else if (subcmd == "N_BYTES") {
+            logs[last_idx].size = std::stoull(r.value);
         }
-        */
+    } else if (r.name == "LOG:STREAM:DATA") {
+        logs[stream_idx].data.append(r.value);
     } else {
-        qDebug() << "Unknown attribute: " << r.name << " = " << r.value;
+        qDebug() << "Unhandled response: " << r.name << " = " << r.value;
     }
 }
 
@@ -632,6 +641,20 @@ QStringList QMooshimeter::range_model(const Mapping &mapping) {
         l.append(format(mapping, i.toDouble()));
     }
     return l;
+}
+
+
+
+void QMooshimeter::stream_log(int idx) {
+    // update index
+    stream_idx = idx;
+    // ensure LogEntry exists
+    if (!logs.contains(idx))
+        logs[idx] = LogEntry(idx);
+    // clear log data
+    logs[idx].data.clear();
+    // request log
+    cmd("LOG:STREAM:INDEX " + QString::number(idx));
 }
 
 
