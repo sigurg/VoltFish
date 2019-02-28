@@ -176,9 +176,14 @@
         <extracomment>copyright notice on about page</extracomment>
         <translation>Esta aplicación es un programa libre bajo los términos de &lt;a href=&quot;https://github.com/sigurg/VoltFish/blob/master/LICENSE&quot;&gt;GNU GPLv2&lt;/a&gt;</translation>
     </message>
-    <message id="switch-logging">
-        <source>Logging</source>
-        <extracomment>log indicator switch</extracomment>
+    <message id="log-stop">
+        <source>Stop logging</source>
+        <extracomment>pulldown menu text</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message id="log-start">
+        <source>Stop logging</source>
+        <extracomment>pulldown menu text</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

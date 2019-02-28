@@ -75,6 +75,17 @@ Page {
                     onClicked: pageStack.push(Qt.resolvedUrl(modelData + ".qml"))
                 }
             }
+            MenuItem {
+                text: (mooshimeter.log) ?
+                          //% "Stop logging"
+                          //: pulldown menu text
+                          qsTrId("log-stop") :
+
+                          //% "Stop logging"
+                          //: pulldown menu text
+                          qsTrId("log-start")
+                onClicked: mooshimeter.log = !mooshimeter.log
+            }
         }
 
         contentHeight: column.height
@@ -307,17 +318,6 @@ Page {
                     }
                 }
             }
-
-            TextSwitch {
-                id: log_switch
-                //% "Logging"
-                //: log indicator switch
-                text: qsTrId("switch-logging")
-                checked: mooshimeter.log
-                automaticCheck: false
-                onClicked: mooshimeter.log = !log_switch.checked
-            }
-
         }
     }
 }
