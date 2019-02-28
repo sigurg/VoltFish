@@ -111,18 +111,26 @@ void QMooshimeter::connect() {
 
     // get all mappings (needs to be done first, for range maps to be initialized)
     auto shmap = cmd("SHARED").get();
-    auto ch1map = cmd("CH1:MAPPING").get();
-    auto ch2map = cmd("CH2:MAPPING").get();
+    auto fut_ch1map = cmd("CH1:MAPPING");
+    auto fut_ch2map = cmd("CH2:MAPPING");
+    auto fut_ch1ana = cmd("CH1:ANALYSIS");
+    auto fut_ch2ana = cmd("CH2:ANALYSIS");
 
     // rewrite shared mappings
+    auto ch1map = fut_ch1map.get();
     ch1map = (ch1map == "SHARED")?shmap:ch1map;
+    auto ch2map = fut_ch2map.get();
     ch2map = (ch2map == "SHARED")?shmap:ch2map;
+
+
+    auto fut_ch1r = cmd("CH1:RANGE_I");
+    auto fut_ch2r = cmd("CH2:RANGE_I");
 
     // update channel 1
     ch1_mapping = Mapping(metaMapping.keyToValue(ch1map.c_str()));
-    ch1_analysis = Analysis(metaAnalysis.keyToValue(cmd("CH1:ANALYSIS").get().c_str()));
+    ch1_analysis = Analysis(metaAnalysis.keyToValue(fut_ch1ana.get().c_str()));
     model_ch1_range = range_model(ch1_mapping);
-    auto r = cmd("CH1:RANGE_I").get().c_str();
+    auto r = fut_ch1r.get().c_str();
     ch1_range = valid_ranges[ch1_mapping].indexOf(r);
 
     emit ch1modelChanged();
@@ -130,13 +138,16 @@ void QMooshimeter::connect() {
 
     // update channel 2
     ch2_mapping = Mapping(metaMapping.keyToValue(ch2map.c_str()));
-    ch2_analysis = Analysis(metaAnalysis.keyToValue(cmd("CH2:ANALYSIS").get().c_str()));
+    ch2_analysis = Analysis(metaAnalysis.keyToValue(fut_ch2ana.get().c_str()));
     model_ch2_range = range_model(ch2_mapping);
-    r = cmd("CH2:RANGE_I").get().c_str();
+    r = fut_ch2r.get().c_str();
     ch2_range = valid_ranges[ch2_mapping].indexOf(r);
 
     emit ch2modelChanged();
     emit ch2Config();
+
+    // start sampling
+    cmd("SAMPLING:TRIGGER CONTINUOUS");
 
     // update sampling rate & buffer depth
     rate = cmd("SAMPLING:RATE").get().c_str();
@@ -144,11 +155,15 @@ void QMooshimeter::connect() {
     emit rateChanged();
     emit depthChanged();
 
-    // start sampling
-    cmd("SAMPLING:TRIGGER CONTINUOUS");
-
     log = ("1" == cmd("LOG:ON").get());
     emit logChanged();
+
+    // update system time, but only if log ain't running
+    if (!log) {
+        using std::chrono::system_clock;
+        const auto &time = system_clock::to_time_t(system_clock::now());
+        cmd("TIME_UTC " + QString::number(time));
+    }
 
     emit connectionChanged();
 }

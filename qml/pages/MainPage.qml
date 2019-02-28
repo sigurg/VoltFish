@@ -19,7 +19,7 @@ Page {
         repeat: false
         interval: 500
         onTriggered: {
-            if (mooshimeter.btaddr != "")
+            if (mooshimeter.btaddr !== "")
                 mooshimeter.connect()
             else
                 pageStack.push(Qt.resolvedUrl("discovery.qml"))
