@@ -51,6 +51,8 @@ public:
     };
     Q_ENUM(TempUnit)
 
+    Q_PROPERTY(bool connected READ connected NOTIFY connectionChanged);
+
     Q_PROPERTY(QString ch1 READ get_ch1 NOTIFY newMeasurement);
     Q_PROPERTY(QString ch2 READ get_ch2 NOTIFY newMeasurement);
     Q_PROPERTY(QString math READ get_math NOTIFY newMeasurement);
@@ -100,6 +102,7 @@ public:
     };
 
 signals:
+    void connectionChanged();
     void newMeasurement();
     void batChanged();
     void logChanged();
@@ -192,6 +195,9 @@ private:
         emit logChanged();
     }
 
+    bool connected() {
+        return mm != nullptr;
+    }
 
     void set_ch1_mapping(const Mapping &m);
     void set_ch1_analysis(const Analysis &a);

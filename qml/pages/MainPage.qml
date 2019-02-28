@@ -26,6 +26,12 @@ Page {
         }
     }
 
+    BusyIndicator {
+        size: BusyIndicatorSize.Large
+        anchors.centerIn: parent
+        running: !mooshimeter.connected
+    }
+
     /*
     onStatusChanged: {
         if (status === PageStatus.Active) {

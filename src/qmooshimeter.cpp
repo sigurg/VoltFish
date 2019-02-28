@@ -149,6 +149,8 @@ void QMooshimeter::connect() {
 
     log = ("1" == cmd("LOG:ON").get());
     emit logChanged();
+
+    emit connectionChanged();
 }
 
 
@@ -156,6 +158,7 @@ void QMooshimeter::connect() {
 void QMooshimeter::disconnect() {
     mm.reset();
     mm = nullptr;
+    emit connectionChanged();
 }
 
 
